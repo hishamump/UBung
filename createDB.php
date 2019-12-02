@@ -51,7 +51,7 @@ if (mysqli_query($link, $sql)) {
     echo 'Error creating table: ' . mysqli_error($link) . "\n";
 }
 //==================================Anouncement
-$sql = "CREATE TABLE Voucher (
+$sql = "CREATE TABLE Anouncement (
     Id INT AUTO_INCREMENT, 
     Title VARCHAR(100),
 	Description VARCHAR(500))";
