@@ -96,10 +96,10 @@ if (mysqli_query($link, $sql)) {
 $sql = "CREATE TABLE Voucher(
     Id INT AUTO_INCREMENT, 
     UserId INT NOT NULL,
-	OrderId INT NOT NULL,
+    OrderId INT NOT NULL,
     PRIMARY KEY(Id),
-	FOREIGN KEY(UserId) REFERENCES User(UserId),
-	FOREIGN KEY(OrderId) REFERENCES Order(OrderId))";
+    FOREIGN KEY(UserId) REFERENCES User(UserId),
+    FOREIGN KEY(OrderId) REFERENCES Order(OrderId))";
 if (mysqli_query($link, $sql)) {
     echo "Table Voucher created successfully\n";
 } else {
@@ -109,7 +109,7 @@ if (mysqli_query($link, $sql)) {
 $sql = "CREATE TABLE Anouncement (
     Id INT AUTO_INCREMENT, 
     Title VARCHAR(100),
-	Description VARCHAR(500))";
+    Description VARCHAR(500))";
 if (mysqli_query($link, $sql)) {
     echo "Table Anouncement created successfully\n";
 } else {
