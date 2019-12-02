@@ -115,6 +115,26 @@ if (mysqli_query($link, $sql)) {
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "\n";
 }
+//==================================DispatcherService
+$sql = "CREATE TABLE DispatcherService (
+    DispatcherId INT AUTO_INCREMENT,
+    ServiceId INT AUTO_INCREMENT)";
+if (mysqli_query($link, $sql)) {
+    echo "Table DispatcherService created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+}
+//==================================DispatcherRating
+$sql = "CREATE TABLE DispatcherRating (
+    DispatcherId INT AUTO_INCREMENT,
+    UserId INT AUTO_INCREMENT,
+    Rate INT NOT NULL,
+    Date INT NOT NULL)";
+if (mysqli_query($link, $sql)) {
+    echo "Table DispatcherRating created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+}
 //Please continue adding your tables' scripts here
 //And finally we close the connection to the MySQL server
 mysqli_close($link);
