@@ -37,33 +37,9 @@ if (mysqli_query($link, $sql)) {
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "\n";
 }
-//==================================Restaurant
-$sql = "CREATE TABLE Restaurant (
-    Id INT AUTO_INCREMENT, 
-    Name VARCHAR(100), 
-    OwnerId INT AUTO_INCREMENT, 
-    PRIMARY KEY(Id))";
-if (mysqli_query($link, $sql)) {
-    echo "Table Restaurant created successfully\n";
-} else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
-}
-//==================================Product
-$sql = "CREATE TABLE Product (
-    Id INT AUTO_INCREMENT, 
-    Name VARCHAR(100), 
-    RestaurantId INT AUTO_INCREMENT, 
-    Description VARCHAR(100), 
-    Price Float,   
-    file_uploads = On
-    PRIMARY KEY(Id))";
-if (mysqli_query($link, $sql)) {
-    echo "Table Product created successfully\n";
-} else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
-}
+
 //==================================Order
-$sql = "CREATE TABLE Order (
+$sql = "CREATE TABLE Orders (
     Id INT AUTO_INCREMENT, 
     UserId INT NOT NULL, 
     RestaurantId INT NOT NULL, 
@@ -75,46 +51,75 @@ $sql = "CREATE TABLE Order (
 if (mysqli_query($link, $sql)) {
     echo "Table Order created successfully\n";
 } else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
-//==================================OrderDetails
-$sql = "CREATE TABLE OrderDetails (
-    OrderId INT AUTO_INCREMENT, 
-    ProductId INT AUTO_INCREMENT,
-	Quantity INT NOT NULL,
-	Price INT NOT NULL, 
-    PRIMARY KEY(OrderId),
-	PRIMARY KEY(ProductId),
-	FOREIGN KEY(OrderId) REFERENCES Order(OrderId),
-	FOREIGN KEY(ProductId) REFERENCES Product(ProductId))";
-if (mysqli_query($link, $sql)) {
-    echo "Table OrderDetails created successfully\n";
-} else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
-}
-//==================================Voucher
-$sql = "CREATE TABLE Voucher(
-    Id INT AUTO_INCREMENT, 
-    UserId INT NOT NULL,
-    OrderId INT NOT NULL,
-    PRIMARY KEY(Id),
-    FOREIGN KEY(UserId) REFERENCES User(UserId),
-    FOREIGN KEY(OrderId) REFERENCES Order(OrderId))";
-if (mysqli_query($link, $sql)) {
-    echo "Table Voucher created successfully\n";
-} else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
-}
-//==================================Anouncement
+// //==================================Anouncement
 $sql = "CREATE TABLE Anouncement (
     Id INT AUTO_INCREMENT, 
     Title VARCHAR(100),
-    Description VARCHAR(500))";
+	Description VARCHAR(500),
+    PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
     echo "Table Anouncement created successfully\n";
 } else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
+
+// //==================================Restaurant
+$sql = "CREATE TABLE Restaurant (
+    Id INT AUTO_INCREMENT, 
+    Name VARCHAR(100), 
+    OwnerId INT, 
+    PRIMARY KEY(Id))";
+if (mysqli_query($link, $sql)) {
+    echo "Table Restaurant created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
+}
+
+// //==================================Product
+$sql = "CREATE TABLE Product (
+    Id INT AUTO_INCREMENT, 
+    Name VARCHAR(100), 
+    RestaurantId INT, 
+    Description VARCHAR(100), 
+    Price Float,   
+    FileUploads VARCHAR(100),
+    PRIMARY KEY(Id))";
+if (mysqli_query($link, $sql)) {
+    echo "Table Product created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
+}
+
+// //==================================Voucher
+$sql = "CREATE TABLE Voucher(
+    Id INT AUTO_INCREMENT, 
+    UserId INT NOT NULL,
+	OrderId INT NOT NULL,
+    PRIMARY KEY(Id),
+	FOREIGN KEY(UserId) REFERENCES User(Id),
+	FOREIGN KEY(OrderId) REFERENCES Orders(Id))";
+if (mysqli_query($link, $sql)) {
+    echo "Table Voucher created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
+}
+// //==================================OrderDetails
+$sql = "CREATE TABLE OrderDetails (
+    OrderId INT, 
+    ProductId INT,
+	Quantity INT NOT NULL,
+	Price FLOAT, 
+    PRIMARY KEY(OrderId, ProductId),
+	FOREIGN KEY(OrderId) REFERENCES Orders(Id),
+	FOREIGN KEY(ProductId) REFERENCES Product(Id))";
+if (mysqli_query($link, $sql)) {
+    echo "Table OrderDetails created successfully\n";
+} else {
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
+}
+
 //==================================DispatcherService
 $sql = "CREATE TABLE DispatcherService (
     DispatcherId INT AUTO_INCREMENT,
