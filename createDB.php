@@ -6,9 +6,9 @@ if (!$link) {
 //==================================
 $sql = "CREATE DATABASE UBung";
 if (mysqli_query($link, $sql)) {
-    echo "Database UBung created successfully\n";
+    echo "Database UBung created successfully<br>";
 } else {
-    echo 'Error creating database: ' . mysqli_error($link) . "\n";
+    echo 'Error creating database: ' . mysqli_error($link) . "<br>";
 }
 mysqli_select_db($link, "UBung") or die(mysqli_connect_error());
 //==================================User
@@ -23,9 +23,9 @@ $sql = "CREATE TABLE User (
     Status BOOLEAN, 
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
-    echo "Table User created successfully\n";
+    echo "Table User created successfully<br>";
 } else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
 //==================================Service
 $sql = "CREATE TABLE Service (
@@ -33,9 +33,9 @@ $sql = "CREATE TABLE Service (
     Name VARCHAR(100), 
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
-    echo "Table Service created successfully\n";
+    echo "Table Service created successfully<br>";
 } else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
 
 //==================================Order
@@ -49,7 +49,7 @@ $sql = "CREATE TABLE Orders (
     DeliveryDate DATE,  
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
-    echo "Table Order created successfully\n";
+    echo "Table Order created successfully<br>";
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
@@ -60,7 +60,7 @@ $sql = "CREATE TABLE Anouncement (
 	Description VARCHAR(500),
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
-    echo "Table Anouncement created successfully\n";
+    echo "Table Anouncement created successfully<br>";
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
@@ -72,7 +72,7 @@ $sql = "CREATE TABLE Restaurant (
     OwnerId INT, 
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
-    echo "Table Restaurant created successfully\n";
+    echo "Table Restaurant created successfully<br>";
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
@@ -87,7 +87,7 @@ $sql = "CREATE TABLE Product (
     FileUploads VARCHAR(100),
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
-    echo "Table Product created successfully\n";
+    echo "Table Product created successfully<br>";
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
@@ -101,7 +101,7 @@ $sql = "CREATE TABLE Voucher(
 	FOREIGN KEY(UserId) REFERENCES User(Id),
 	FOREIGN KEY(OrderId) REFERENCES Orders(Id))";
 if (mysqli_query($link, $sql)) {
-    echo "Table Voucher created successfully\n";
+    echo "Table Voucher created successfully<br>";
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
@@ -115,7 +115,7 @@ $sql = "CREATE TABLE OrderDetails (
 	FOREIGN KEY(OrderId) REFERENCES Orders(Id),
 	FOREIGN KEY(ProductId) REFERENCES Product(Id))";
 if (mysqli_query($link, $sql)) {
-    echo "Table OrderDetails created successfully\n";
+    echo "Table OrderDetails created successfully<br>";
 } else {
     echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
@@ -125,9 +125,9 @@ $sql = "CREATE TABLE DispatcherService (
     DispatcherId INT ,
     ServiceId INT)";
 if (mysqli_query($link, $sql)) {
-    echo "Table DispatcherService created successfully\n";
+    echo "Table DispatcherService created successfully<br>";
 } else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
 //==================================DispatcherRating
 $sql = "CREATE TABLE DispatcherRating (
@@ -136,9 +136,9 @@ $sql = "CREATE TABLE DispatcherRating (
     Rate INT NOT NULL,
     Date INT NOT NULL)";
 if (mysqli_query($link, $sql)) {
-    echo "Table DispatcherRating created successfully\n";
+    echo "Table DispatcherRating created successfully<br>";
 } else {
-    echo 'Error creating table: ' . mysqli_error($link) . "\n";
+    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
 }
 //Please continue adding your tables' scripts here
 //And finally we close the connection to the MySQL server
