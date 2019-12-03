@@ -1,5 +1,5 @@
-
 <?php include 'header.php';?>
+<a href="aAdd.php">New Announcement</a>
 <?php
     $gender = 'M';
     if(isset($_POST['gender'])) {

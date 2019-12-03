@@ -55,6 +55,7 @@ $sql = "CREATE TABLE Announcement (
     Id INT AUTO_INCREMENT, 
     Title VARCHAR(100),
 	Description VARCHAR(500),
+    UserId INT NOT NULL,
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
     echo "Table Announcement created successfully<br>";

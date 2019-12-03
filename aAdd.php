@@ -18,7 +18,7 @@
             $description = $_POST["description"]; 
         }
         $strSQL = "insert into Announcement (Title, Description, UserId) values 
-        ('$title', $description, 1)" 
+        ('$title', '$description', 1)" 
         or die(mysqli_connect_error());
 
         $result = mysqli_query($link, $strSQL);
