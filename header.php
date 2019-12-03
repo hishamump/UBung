@@ -7,5 +7,6 @@
     <title>UBung Food Service</title>
 </head>
 <?php include 'dataConnection.php';?>
+<?php include 'selectDB.php';?>
 <body style="background-image: url('image/2.jpg'); background-repeat: no-repeat;">
     <?php include 'menu.php';?>

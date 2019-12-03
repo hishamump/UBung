@@ -1,8 +1,8 @@
 <?php
 //Connect to the database server.
-    $link = mysqli_connect("localhost", "root", "", "", "3307") or die(mysqli_connect_error());
+    $link = mysqli_connect("localhost", "root", "", "", "3306");
 
-    //Select the database.
-    mysqli_select_db($link, "UBung") or die(mysqli_error($link));
-
+    if (!$link) {
+        die('Could not connect: ' . mysqli_connect_error());
+    }
 ?>

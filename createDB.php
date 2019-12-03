@@ -1,8 +1,5 @@
+<?php include 'dataConnection.php'; ?>
 <?php
-$link = mysqli_connect("localhost", "root", "", "", "3307");
-if (!$link) {
-    die('Could not connect: ' . mysqli_connect_error());
-}
 //==================================
 $sql = "CREATE DATABASE UBung";
 if (mysqli_query($link, $sql)) {
