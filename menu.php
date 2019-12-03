@@ -1,4 +1,4 @@
-<div style="background-color: lightblue;">
+<div style="background-color: lightblue; margin-bottom: 20px;">
 <a href="index.php">Home</a> | 
 <a href="index.php">Despatcher</a> | 
 <a href="index.php">Customer </a> | 
