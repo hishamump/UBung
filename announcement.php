@@ -12,17 +12,17 @@
     $result = mysqli_query($link, $query);
 
     //Loop the recordset $rs
-    echo "<table border='1'>";
+    echo "<table>";
 
     while ($row = mysqli_fetch_array($result)) {
         echo '
         
         <tr>
-            <td>Title:</td>
+            <td><h3>Title:</h3></td>
             <td>' . $row["Title"] . '</td>
         </tr>
         <tr>
-            <td>Description:</td>
+            <td><h3>Description:</h3></td>
             <td>' . $row["Description"] . '</td>
         </tr>  
         <tr>
