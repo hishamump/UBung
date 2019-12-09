@@ -8,5 +8,5 @@
 </head>
 <?php include 'dataConnection.php';?>
 <?php include 'selectDB.php';?>
-<body style="background-image: url('image/2.jpg'); background-repeat: no-repeat;">
+<body style="background-image: url('image/3.jpg');">
     <?php include 'menu.php';?>
