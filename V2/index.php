@@ -6,6 +6,5 @@
     </li>
     <li class="breadcrumb-item active">Overview</li>
   </ol>
-  <h1>Welcome to UBung Food Service</h1>
-
+  <h1>UBung Food Service Dashbord</h1>
 <?php include 'footer.php';?>
