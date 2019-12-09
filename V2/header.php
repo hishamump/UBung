@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +21,8 @@
   <link href="css/sb-admin.css" rel="stylesheet">
 
 </head>
-
+<?php include 'dataConnection.php';?>
+<?php include 'selectDB.php';?>
 <body id="page-top">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
     <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
