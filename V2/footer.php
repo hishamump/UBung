@@ -1,3 +1,5 @@
+    </div>
+      <!-- /.container-fluid -->
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
         <div class="container my-auto">
@@ -55,5 +57,11 @@
   <!-- Demo scripts for this page-->
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
+
+
+    <!-- Demo scripts for chart page-->
+    <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-bar-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
 </body>
 </html>
