@@ -21,11 +21,11 @@
         <span>Reports</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="rDespatchers.php">Despatchers</a>
-        <a class="dropdown-item" href="rCustomers,.php">Customers</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/despatchers.php">Despatchers</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/customers,.php">Customers</a>
 
-        <a class="dropdown-item" href="rOrders.php">Orders</a>
-        <a class="dropdown-item" href="rRegistered,.php">Restaurants/Cafeterias</a>        
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/orders.php">Orders</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/registered,.php">Restaurants/Cafe...</a>        
     </div>
     </li>
     <li class="nav-item dropdown">
@@ -35,9 +35,9 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <h6 class="dropdown-header">Login Screens:</h6>
-        <a class="dropdown-item" href="login.html">Login</a>
-        <a class="dropdown-item" href="register.html">Register</a>
-        <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/login.html">Login</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/register.html">Register</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/forgot-password.html">Forgot Password</a>
         <div class="dropdown-divider"></div>
         <h6 class="dropdown-header">Other Pages:</h6>
         <a class="dropdown-item" href="404.html">404 Page</a>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+  define("ROOT", "UBung");
+?>
 <head>
 
   <meta charset="utf-8">
@@ -12,13 +14,13 @@
   <title>SB Admin - Dashboard</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/<?php echo ROOT ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Page level plugin CSS-->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="/<?php echo ROOT ?>/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="/<?php echo ROOT ?>/css/sb-admin.css" rel="stylesheet">
 
 </head>
 <?php include 'dataConnection.php';?>
