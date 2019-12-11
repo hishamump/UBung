@@ -30,17 +30,20 @@
 			<label>Confirm password</label>
 			<input type="password" name="password_2">
 		</div>
+		<div class="input-group">
+			<label>Address</label>
+			<input type="text" name="address">
+		</div>
+		<div class="input-group">
+			<label>Phone Number</label>
+			<input type="number" name="phone">
+		</div>
 		<div>
 		<td>
 		Role:<input type="radio" name="role" value="dispatcher">Dispatcher
 		<input type="radio" name="role" value="customer">Customer
 		</td>
-		<div>
-		<td>
-		Gender:<input type="radio" name="gender" value="Male">Male
-		<input type="radio" name="gender" value="Female">Female
-		</td>
-	</div>
+		
 		<div class="input-group">
 			<button type="submit" class="btn" name="reg_user">Register</button>
 		</div>

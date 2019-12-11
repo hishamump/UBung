@@ -10,5 +10,5 @@
 }
  
 // Attempt select query execution with order by clause
-$sql = "SELECT * FROM users " ;
+$sql = "SELECT * FROM user " ;
 ?>

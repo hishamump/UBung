@@ -15,7 +15,6 @@
         <a class="dropdown-item" href="aAdd.php">Add New</a>
     </div>
     </li>
-	
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
@@ -30,7 +29,7 @@
     </div>
     </li>
 	
-	<li class="nav-item dropdown">
+		<li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
         <span>Orders</span>
@@ -41,7 +40,7 @@
         
     </div>
     </li>
-	
+
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
@@ -49,8 +48,8 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <h6 class="dropdown-header">Login Screens:</h6>
-        <a class="dropdown-item" href="/<?php echo ROOT ?>/login.html">Login</a>
-        <a class="dropdown-item" href="/<?php echo ROOT ?>/register.html">Register</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/login.php">Login</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/register.php">Register</a>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/forgot-password.html">Forgot Password</a>
         <div class="dropdown-divider"></div>
         <h6 class="dropdown-header">Other Pages:</h6>
