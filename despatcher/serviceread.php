@@ -35,6 +35,8 @@ while ($row = mysqli_fetch_array($result)) {
 foreach ($_POST['services'] as $selection =>$value) {
 			$services[]=$value;
 		}
+		
+		
 
 $column= implode(", ", $services);	
 
@@ -74,7 +76,7 @@ while ($row = mysqli_fetch_array($result)) {
 $query = "SELECT Id FROM service ORDER BY Id DESC LIMIT 1;" or die(mysqli_connect_error());
  $result = mysqli_query($link, $query);
   
-while ($row = mysqli_fetch_array($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
 	      
     $b = $row["Id"];
 	

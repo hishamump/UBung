@@ -38,7 +38,7 @@
         <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/despatcherMain.php">View Profile</a>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/feedback.php">Feedback</a>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/orders.php">Orders</a>
-		 <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/services.php">Services</a>
+		 <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/viewservices.php">Services</a>
            
     </div>
     </li>

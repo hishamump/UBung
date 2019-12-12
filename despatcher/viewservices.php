@@ -1,4 +1,9 @@
 <?php
+ob_start();
+?>
+
+
+<?php
 
 
 
@@ -36,10 +41,13 @@ while ($row = mysqli_fetch_array($result)) {
  
 
  
-     $query = "SELECT dispatcherservice.DispatcherId,service.Name, user.UserName FROM service,dispatcherservice, user WHERE dispatcherservice.DispatcherId = '$a' AND user.Id = '$a'; " or die(mysqli_connect_error());
+     $sql = "SELECT dispatcherservice.DispatcherId,service.Name, user.UserName FROM service,dispatcherservice, user WHERE dispatcherservice.DispatcherId = '$a' AND user.Id = '$a'; " or die(mysqli_connect_error());
+
 	  
 
-  $result = mysqli_query($link, $query);
+ 
+if($result = mysqli_query($link, $sql)){
+    if(mysqli_num_rows($result) > 0){
      echo "<table border='1'>";
     echo "<tr>";
                 echo "<th>DispatcherId</th>";
@@ -48,8 +56,8 @@ while ($row = mysqli_fetch_array($result)) {
                 
 
             echo "</tr>";
-if ($row = mysqli_fetch_array($result)) {
-	
+
+	while ($row = mysqli_fetch_array($result)) {
 	     echo "<tr>";
 		
                 echo "<td>" . $row['DispatcherId'] . "</td>";
@@ -57,8 +65,37 @@ if ($row = mysqli_fetch_array($result)) {
 				 echo "<td>" . $row['UserName'] . "</td>";
                
             echo "</tr>";
+			
+           echo' <td style="background-color:purple">
+                <button onclick="window.location.href = \'updateservice.php?id=' . $row["DispatcherId"] . '\';">Edit</button>
+				<button onclick="window.location.href = \'deleteservice.php?id=' . $row["DispatcherId"] . '\';">Delete</button>
+            </td>
+          
+        </tr>                 
+        <tr>
+            <td colspan = "5" style="background-color:grey">&nbsp;</td>
+        </tr>   ';        
+               
+			
         }
         echo "</table>";
+		
+  mysqli_free_result($result);
+  
+    } else{
+        echo "No records matching your query were found.";
+		header( "refresh:5;url=services.php" );
+		ob_enf_flush();
+
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
+
+
+  
+	
 
 
 ?>
