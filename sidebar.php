@@ -29,6 +29,20 @@
     </div>
     </li>
 	
+	 <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Despatchers</span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/despatcherMain.php">View Profile</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/feedback.php">Feedback</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/orders.php">Orders</a>
+		 <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/services.php">Services</a>
+           
+    </div>
+    </li>
+	
 		<li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
