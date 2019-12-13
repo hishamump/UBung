@@ -11,11 +11,11 @@ mysqli_select_db($link, "UBung") or die(mysqli_connect_error());
 //==================================User
 $sql = "CREATE TABLE User (
     Id INT AUTO_INCREMENT, 
-    UserName VARCHAR(100), 
+    UserName VARCHAR(100) UNIQUE, 
     Password VARCHAR(100), 
     Address  VARCHAR(200),
     Phone VARCHAR(15), 
-    Email VARCHAR(100), 
+    Email VARCHAR(100) UNIQUE, 
     Role VARCHAR(10), 
     Status BOOLEAN, 
     PRIMARY KEY(Id))";

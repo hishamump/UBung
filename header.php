@@ -1,6 +1,15 @@
+<?php include 'constants.php'?>
+<?php 
+  session_start();
+
+	if(!isset($_SESSION['username']))
+	{
+		header('location:/' . ROOT .'/login.php');
+		exit;
+	}		
+?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'constants.php';?>
 <head>
 
   <meta charset="utf-8">
@@ -25,7 +34,7 @@
 <?php include 'selectDB.php';?>
 <body id="page-top">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="navbar-brand mr-1" href="new.php">UBung</a>
+    <a class="navbar-brand mr-1" href="dashboard.php">UBung</a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button>

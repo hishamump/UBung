@@ -26,7 +26,7 @@
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="new.php">UBUNG</a>
+    <a class="navbar-brand mr-1" href="dashboard.php">UBUNG</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -121,7 +121,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="new.php">Dashboard</a>
+            <a href="dashboard.php">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Blank Page</li>
         </ol>

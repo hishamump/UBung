@@ -1,8 +1,9 @@
+<?php include 'constants.php';?>
 <?php include('server.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Registration system PHP and MySQL</title>
+	<title>UBung - Register New Account</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -16,11 +17,11 @@
 
 		<div class="input-group">
 			<label>Username</label>
-			<input type="text" name="username" value="<?php echo $username; ?>">
+			<input type="text" name="username" value="<?php echo $username ?>">
 		</div>
 		<div class="input-group">
 			<label>Email</label>
-			<input type="email" name="email" value="<?php echo $email; ?>">
+			<input type="email" name="email" value="<?php echo $email ?>">
 		</div>
 		<div class="input-group">
 			<label>Password</label>
@@ -32,16 +33,17 @@
 		</div>
 		<div class="input-group">
 			<label>Address</label>
-			<input type="text" name="address">
+			<input type="text" name="address" value="<?php echo $address ?>">
 		</div>
 		<div class="input-group">
 			<label>Phone Number</label>
-			<input type="number" name="phone">
+			<input type="number" name="phone" value="<?php echo $phone ?>">
 		</div>
 		<div>
 		<td>
-		Role:<input type="radio" name="role" value="dispatcher">Dispatcher
-		<input type="radio" name="role" value="customer">Customer
+		Role:&nbsp;<input type="radio" name="role" value="<?php echo CUSTOMER?>">Normal
+		<input type="radio" name="role" value="<?php echo DESPATCHER?>">Despatcher
+		<input type="radio" name="role" value="<?php echo OWNER?>">Restaurant
 		</td>
 		
 		<div class="input-group">

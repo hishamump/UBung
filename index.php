@@ -1,21 +1,19 @@
-
 <?php
-
-
-
-	session_start(); 
+	session_start();
+	require_once('inc/config.php');
 
 	if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: login.php');
 	}
 
+
 	if (isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['username']);
+		unset($_SESSION['success']);
 		header("location: login.php");
 	}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +28,6 @@
 		<h2>Home Page</h2>
 	</div>
 	<div class="content">
-
 		<!-- notification message -->
 		<?php if (isset($_SESSION['success'])) : ?>
 			<div class="error success" >
@@ -47,30 +44,19 @@
 		<?php  if (isset($_SESSION['username'])) : ?>
 			<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "", "", "3306") or die(mysql_connect_error());
-mysqli_select_db($link, "ubung") or die(mysqli_error($link));
 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+include 'dataConnection.php';
+include 'selectDB.php';
+
 $name = $_SESSION['username'];
 // Attempt select query execution with order by clause
-$sql = "SELECT role FROM user	 WHERE username = '$name' ";
-
+$sql = "SELECT role FROM User WHERE username = '$name' ";
 
 if($result = mysqli_query($link, $sql)){
-    if(mysqli_num_rows($result) > 0){
-       
-        while($row = mysqli_fetch_array($result)){       
-		  //header("Location: new.php"); 
-                echo  "You are" . " " . $row['role'] ;        
-				header( "refresh:2;url=new.php" );
-        }		
+    if(mysqli_num_rows($result) == 1){
         // Close result set
-        mysqli_free_result($result);
+		mysqli_free_result($result);
+		header("Location: dashboard.php"); 
     } else{
         echo "No records matching your query were found.";
     }
@@ -78,18 +64,12 @@ if($result = mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-
- 
 // Close connection
 mysqli_close($link);
 ?>
-			
-
 			<p> <a href="index.php?logout='1'" style="color: red;">Logout</a> </p>
 			
-		<?php endif ?>
-		
+<?php endif ?>
 	</div>
-		
 </body>
 </html>
