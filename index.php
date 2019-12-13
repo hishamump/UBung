@@ -15,7 +15,7 @@
 		unset($_SESSION['username']);
 		header("location: login.php");
 	}
-header( "refresh:2;url=new.php" );
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,14 +58,16 @@ if($link === false){
 }
 $name = $_SESSION['username'];
 // Attempt select query execution with order by clause
-$sql = "SELECT role FROM users WHERE username = '$name' ";
+$sql = "SELECT role FROM user	 WHERE username = '$name' ";
 
 
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
        
-        while($row = mysqli_fetch_array($result)){                      
-                echo  "You are" . " " . $row['role'] ;                         
+        while($row = mysqli_fetch_array($result)){       
+		  //header("Location: new.php"); 
+                echo  "You are" . " " . $row['role'] ;        
+				header( "refresh:2;url=new.php" );
         }		
         // Close result set
         mysqli_free_result($result);
