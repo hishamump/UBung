@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-  define("ROOT", "UBung");
-?>
+<?php include 'constants.php';?>
 <head>
 
   <meta charset="utf-8">
