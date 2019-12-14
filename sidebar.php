@@ -12,11 +12,12 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/">Announcements</a>
-        <?php if ($_SESSION['role'] == ADMIN) { ?>
+        <?php if (IsInRole(ADMIN)) { ?>
             <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/add.php">Add</a>
         <?php }?>
     </div>
     </li>
+    <?php if (IsInRole(ADMIN)) { ?>
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
@@ -30,6 +31,7 @@
         <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/registered,.php">Restaurants/Cafe...</a>        
     </div>
     </li>
+    <?php }?>
 	
 	 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

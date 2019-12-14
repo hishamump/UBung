@@ -1,3 +1,4 @@
 <?php include '../header.php';?>
-  <h2>Despatchers</h2>
+<?php CheckRole(ADMIN) ?>
+<h2>Despatchers</h2>
 <?php include '../footer.php';?>
