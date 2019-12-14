@@ -49,6 +49,8 @@
         </div>
       </div>
     </form>
+    <span style="color:white">Hello <?php echo $_SESSION['username'] ?></span>&nbsp;
+    <span style="color:white">(<?php echo $_SESSION['role'] ?>)</span>
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
@@ -81,7 +83,6 @@
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <span class="dropdown-item">Hello <?php echo $_SESSION['username'] ?></span>
           <a class="dropdown-item" href="#" style="display:none">Settings</a>
           <a class="dropdown-item" href="#" style="display:none">Activity Log</a>
           <div class="dropdown-divider"></div>
