@@ -54,8 +54,7 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <a class="dropdown-item" href="/<?php echo ROOT ?>/orders/orderMain.php">Main</a>
-        <a class="dropdown-item" href="/<?php echo ROOT ?>/orders/update.php">Update</a>
-        
+		<a class="dropdown-item" href="/<?php echo ROOT ?>/orders/viewDespatcher.php">View Despatcher</a>
     </div>
     </li>
 
