@@ -27,6 +27,9 @@
 			<button type="submit" class="btn" name="login_user">Login</button>
 		</div>
 		<p>
+			Forgot password? <a href="forgot-password.html">Forgot Password</a>
+		</p>
+		<p>
 			Not yet a member? <a href="register.php">Sign up</a>
 		</p>
 	</form>

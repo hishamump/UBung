@@ -55,12 +55,12 @@
     </div>
     </li>
 
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" style="display:none">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
         <span>Pages</span>
     </a>
-    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+    <div class="dropdown-menu" aria-labelledby="pagesDropdown" style="display:none">
         <h6 class="dropdown-header">Login Screens:</h6>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/login.php">Login</a>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/register.php">Register</a>
