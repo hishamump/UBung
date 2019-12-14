@@ -11,7 +11,7 @@
         <span>Announcements</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/list.php">Announcements</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/">Announcements</a>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/add.php">Add</a>
     </div>
     </li>
