@@ -1,14 +1,18 @@
-<?php include '../header.php';?>
-  <!-- Breadcrumbs-->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="../index.php">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item active">OrderMain</li>
-  </ol>
-  
-  <h2>Orders</h2>
-  
-  Your Content Here
-  
-<?php include '../footer.php';?>
+<!DOCTYPE html>
+<html>
+<title>Manage Order</title>
+<body>
+<center>
+
+<br>
+<h1 align="center">Manage Order</h1>
+<br>
+
+<p align="center"><font size="6" >
+	<a href="viewDespatcher.php">  	<b>1. Despactcher List</b></a><br><br>
+	<a href="foodMenu.php">		<b>2. Order Food</a></b><br><br>
+</font>
+</p>
+
+</body>
+</html>
