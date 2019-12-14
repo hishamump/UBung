@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Delete User</title>
 </head>
-<?php include 'selectDB.php'; ?>
+<?php include '../selectDB.php'; ?>
 <body>
 
     <?php
