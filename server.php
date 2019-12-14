@@ -1,4 +1,5 @@
 <?php 
+	include 'selectDB.php';
 	session_start();
 
 	// variable declaration
@@ -6,11 +7,9 @@
 	$email    = "";
 	$address = "";
 	$phone    = "";
+	$role    = "";
 	$errors = array(); 
 	$_SESSION['success'] = "";
-
-	// connect to database
-	$link = mysqli_connect('localhost', 'root', '', 'ubung');
 
 	// REGISTER USER
 	if (isset($_POST['reg_user'])) {
@@ -70,7 +69,6 @@
 			$results = mysqli_query($link, $query);
 
 			if (mysqli_num_rows($results) == 1) {
-				
 				$_SESSION['username'] = $username;
 				$_SESSION['success'] = "Welcome";
 				

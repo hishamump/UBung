@@ -2,12 +2,7 @@
 <?php
 //First, connect to the MySQL server.
 
-$link = mysqli_connect("localhost", "root", "", "", "3306");
-if (!$link) {
-    die('Could not connect: ' . mysqli_connect_error());
-}
-
-mysqli_select_db($link, "ubung") or die(mysqli_connect_error());
+include 'selectDB.php';
 
 //Then, create a database named �mydatabase�.
 $sql = "CREATE TABLE users (

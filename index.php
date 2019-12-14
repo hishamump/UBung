@@ -45,7 +45,6 @@
 			<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
 <?php
 
-include 'dataConnection.php';
 include 'selectDB.php';
 
 $name = $_SESSION['username'];

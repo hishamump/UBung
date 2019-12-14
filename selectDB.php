@@ -1,6 +1,5 @@
 <?php
-   // to make a connection with database
-	$link = mysqli_connect("localhost", "root","","ubung", "3306") or die(mysqli_connect_error());
+ 	include 'dataConnection.php';
 
 	// to select the targeted database
 	mysqli_select_db($link, "ubung") or die(mysqli_error());
