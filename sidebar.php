@@ -12,7 +12,9 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/">Announcements</a>
-        <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/add.php">Add</a>
+        <?php if ($_SESSION['role'] == ADMIN) { ?>
+            <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/add.php">Add</a>
+        <?php }?>
     </div>
     </li>
     <li class="nav-item dropdown">
