@@ -8,7 +8,6 @@
     <title>Delete User</title>
 </head>
 <?php include 'selectDB.php'; ?>
-<?php header( "refresh:2;url=dashboard.php" );?>
 <body>
 
     <?php
@@ -16,8 +15,8 @@
     if (isset($_GET['id'])) {
         $uid = $_GET["id"];
     }
-    if ($uid > 0) {
-        $query = "DELETE FROM users WHERE id = $uid"
+    if ($uid !="") {
+        $query = "DELETE FROM User WHERE UserName = '$uid'"
             or die(mysqli_connect_error());
         // to run sql query in database
         $result = mysqli_query($link, $query);
@@ -28,6 +27,8 @@
         } else {
             die("Deletion failed" . mysqli_error($link));
         }
+    }else{
+        echo ("User not found");
     }
     ?>
 </body>
