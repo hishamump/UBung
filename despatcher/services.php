@@ -27,6 +27,7 @@ $ll = $_SESSION['username'];
     <li class="breadcrumb-item active">Services</li>
   </ol>
   
+  <h2>Available Services</h2>
  <?php 
  
      $query = "SELECT * FROM user WHERE username = '$ll'; " or die(mysqli_connect_error());

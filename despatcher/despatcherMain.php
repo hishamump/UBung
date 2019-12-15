@@ -1,4 +1,7 @@
 <?php
+
+
+
 	session_start(); 
 
 	if (!isset($_SESSION['username'])) {
@@ -25,7 +28,7 @@ $ll = $_SESSION['username'];
     <li class="breadcrumb-item active">Despatcher</li>
   </ol>
   
-  <h2>Despatchers</h2>
+  <h2>My Profile</h2>
 <?php
    
     //SQL query

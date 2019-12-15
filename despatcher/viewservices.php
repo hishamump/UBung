@@ -25,7 +25,7 @@ $ll = $_SESSION['username'];
 ?>
 
 <?php include '../header.php';?>
-
+<h2>My Services</h2>
 <?php 
  
      $query = "SELECT * FROM user WHERE username = '$ll'; " or die(mysqli_connect_error());
@@ -83,9 +83,9 @@ if($result = mysqli_query($link, $sql)){
   mysqli_free_result($result);
   
     } else{
-        echo "No records matching your query were found.";
-		header( "refresh:5;url=services.php" );
-		ob_enf_flush();
+        echo "No Services Added Yet";
+		header( "refresh:2;url=services.php" );
+		ob_end_flush();
 
     }
 } else{
