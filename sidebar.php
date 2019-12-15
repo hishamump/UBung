@@ -14,6 +14,7 @@
         <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/">Announcements</a>
         <?php if (IsInRole(ADMIN)) { ?>
             <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/add.php">Add</a>
+            <a class="dropdown-item" href="/<?php echo ROOT ?>/announcements/manage.php">Manage</a>
         <?php }?>
     </div>
     </li>
