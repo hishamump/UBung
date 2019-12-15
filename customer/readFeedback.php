@@ -35,7 +35,7 @@ $a = $_SESSION['username'];
 	 $result = mysqli_query($link, $query);
 	 while ($row = mysqli_fetch_array($result)){
 		 $a = $row["Id"];
-		 echo $a;
+		
 	 }
 	 ?>
 	 <?php

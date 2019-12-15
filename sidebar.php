@@ -54,8 +54,8 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <a class="dropdown-item" href="/<?php echo ROOT ?>/customer/showProfile.php">View Profile</a>
-        <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/feedbackReport.php">Feedback</a>
-          <a class="dropdown-item" href="/<?php echo ROOT ?>/customer/feedbackForm.php">Feedback</a>  
+        
+          <a class="dropdown-item" href="/<?php echo ROOT ?>/customer/feedbackForm.php">Give Feedback</a>  
     </div>
     </li>
 	
