@@ -20,5 +20,13 @@
             echo UNAUTHORIZED;
             exit;
         }
-    }    
+    }   
+    
+    function ErrorMessage($message) {
+        echo "<div class='alert alert-danger' role='alert'>" . $message . "</div>";  
+    }   
+
+    function SuccessMessage($message) {
+        echo "<div class='alert alert-success' role='alert'>" . $message . "</div>";  
+    }   
 ?>
