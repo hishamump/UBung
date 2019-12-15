@@ -1,24 +1,7 @@
-<?php
 
 
-
-	session_start(); 
-
-	if (!isset($_SESSION['username'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: login.php');
-	}
-
-	if (isset($_GET['logout'])) {
-		session_destroy();
-		unset($_SESSION['username']);
-		header("location: login.php");
-	}
-$ll = $_SESSION['username'];
-
-?>
-
-<?php include '../header.php';?>
+<?php include '../header.php';
+$ll = $_SESSION['username'];?>
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -49,7 +32,7 @@ while ($row = mysqli_fetch_array($result)) {
     <option>Deliver Burger</option>
 	<option>Deliver Waffle</option>
     <option>Deliver Drinks</option>
-    <option>Fantasy</option>
+    <option>Deliver Fast Food</option>
   </select><br><br>
   <br><input type="submit">
   

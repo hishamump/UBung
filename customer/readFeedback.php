@@ -30,18 +30,24 @@ $a = $_SESSION['username'];
    
     $r = $_POST["rate"];
     $d = $_POST["date"];
+	$dd = $_POST["despatcher"];
 	
     $query = "SELECT * FROM user where username = '$a'; " or die(mysqli_connect_error());
 	 $result = mysqli_query($link, $query);
 	 while ($row = mysqli_fetch_array($result)){
 		 $a = $row["Id"];
-		
 	 }
+	 /* $query = "SELECT * FROM dispatcherservice "  or die(mysqli_connect_error());
+	 $result = mysqli_query($link, $query);
+	  while ($row = mysqli_fetch_array($result)){
+		 $b = $row["DispatcherId"];
+		 echo $b; 
+	 }*/
 	 ?>
 	 <?php
 		
 	$query = "INSERT into dispatcherrating (DispatcherId, UserId, Rate, Date) values 
-            (' ', '$a ', '$r', '$d')" 
+            ('$dd ', '$a ', '$r', '$d')" 
 	or die(mysqli_connect_error());
 
     // to run sql query in database

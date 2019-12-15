@@ -6,7 +6,9 @@
     </li>
 	
     <li class="breadcrumb-item active">Feedback Report</li>
+
   </ol>
+  	<h2>Feedback:</h2>
   <?php
    //SQL query
     $query = "SELECT * FROM dispatcherrating; " or die(mysqli_connect_error());
@@ -19,8 +21,16 @@
     while ($row = mysqli_fetch_array($result)) {
         echo '
   
-  	<h2>Feedback:</h2>
+  	
     <table border="1">
+	<tr>
+            <td>Despatcher Id:</td>
+            <td>'
+               
+           . $row["DispatcherId"].
+                
+            '</td>
+        </tr>
 	<tr>
             <td>Customer id:</td>
             <td>'

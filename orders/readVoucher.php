@@ -35,7 +35,7 @@ $a = $_SESSION['username'];
 		 $a = $row["Id"];
 		 echo $a;
 	 }
-	 $query = "SELECT Id FROM orders where UserId = '$a'; "  or die(mysqli_connect_error());
+	 $query = "SELECT * FROM orders "  or die(mysqli_connect_error());
 	 $result = mysqli_query($link, $query);
 	  while ($row = mysqli_fetch_array($result)){
 		 $b = $row["Id"];
@@ -45,7 +45,7 @@ $a = $_SESSION['username'];
 	 <?php
 		
 	$query = "INSERT into voucher (Id, UserId, OrderId) values 
-            (' ', '$a ','$b')" 
+            (' ', '$a','$b')" 
 	or die(mysqli_connect_error());
 
     // to run sql query in database
