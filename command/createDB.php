@@ -67,7 +67,7 @@ if (mysqli_query($link, $sql)) {
 // //==================================Restaurant
 $sql = "CREATE TABLE Restaurant (
     Id INT AUTO_INCREMENT, 
-    Name VARCHAR(100), 
+    RName VARCHAR(100), 
     OwnerId INT, 
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
