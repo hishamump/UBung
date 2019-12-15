@@ -52,6 +52,7 @@ $sql = "CREATE TABLE Announcement (
 	Description VARCHAR(500),
     Image VARCHAR(500),
     UserId INT NOT NULL,
+    ADate DATETIME NOT NULL,
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
     echo "Table Announcement created successfully<br>";
