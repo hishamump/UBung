@@ -1,7 +1,6 @@
 
 <?php include '../header.php';
 $a = $_SESSION['username'];?>
-<?php CheckRole('Customer') ?>
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -12,7 +11,7 @@ $a = $_SESSION['username'];?>
   </ol>
   <?php
    //SQL query
-    $query = "SELECT * FROM user where username = '$a'; " or die(mysqli_connect_error());
+    $query = "SELECT * FROM orderdetails where username = '$a'; " or die(mysqli_connect_error());
 
     $result = mysqli_query($link, $query);
 
@@ -22,43 +21,44 @@ $a = $_SESSION['username'];?>
     while ($row = mysqli_fetch_array($result)) {
         echo '
   
-  	<h2>Your Profile:</h2>
+  	<h2>Details:</h2>
     <table border="1">
         <tr>
-            <td>Username:</td>
+            <td>Order ID:</td>
             <td>'
                
-           . $row["UserName"].
+           . $row["OrderId"].
                 
             '</td>
         </tr>
 		<tr>
-            <td>Email:</td>
+            <td>Product Id:</td>
             <td>'
                
-           . $row["Email"].
+           . $row["ProductId"].
                 
             '</td>
         </tr>
         <tr>
-            <td>Phone number:</td>
+            <td>Quantity of product:</td>
             <td>'
                
-           . $row["Phone"].
+           . $row["Quantity"].
                 
             '</td>
         </tr>
 		<tr>
-            <td>Address:</td>
+            <td>Total price of product :</td>
             <td>'
                
-           . $row["Address"].
+           . $row["Price"].
                 
             '</td>
         </tr>
+		
 		 <tr>
             <td style="background-color:black">
-                <button onclick="window.location.href = \'updateCustomer.php?id=' . $row["Id"] . '\';">Edit</button>
+                <button onclick="window.location.href = \'updateOrder.php?id=' . $row["Id"] . '\';">Update Order</button>
             </td>
            
         </tr>                 

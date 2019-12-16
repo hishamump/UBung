@@ -9,7 +9,7 @@
   
   
   
-  <?php include '../selectDB.php'; ?>
+ 
 
 <body>
    

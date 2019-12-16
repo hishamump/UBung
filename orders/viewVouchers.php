@@ -19,10 +19,10 @@
     while ($row = mysqli_fetch_array($result)) {
         echo '
   
-  	<h2>Feedback:</h2>
+  	<h2>Voucher:</h2>
     <table border="1">
 	<tr>
-            <td>Customer id:</td>
+            <td>Id:</td>
             <td>'
                
            . $row["Id"].
@@ -30,7 +30,7 @@
             '</td>
         </tr>
         <tr>
-            <td>Rating given:</td>
+            <td>User Id:</td>
             <td>'
                
            . $row["UserId"].
@@ -38,7 +38,7 @@
             '</td>
         </tr>
 		<tr>
-            <td>Date:</td>
+            <td>Order Id:</td>
             <td>'
                
            . $row["OrderId"].

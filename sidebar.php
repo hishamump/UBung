@@ -33,7 +33,7 @@
     </div>
     </li>
     <?php }?>
-	
+	<?php if (IsInRole('Despatcher')) { ?>
 	 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
@@ -42,12 +42,14 @@
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/despatcherMain.php">View Profile</a>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/feedbackReport.php">Feedback</a>
-        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/orders.php">Orders</a>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/viewBooking.php">Order List</a>
+		 <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/despatchers.php">View Report</a>
 		 <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/viewservices.php">Services</a>
            
     </div>
     </li>
-	
+	<?php }?>
+	<?php if (IsInRole('Customer')) { ?>
 	 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
@@ -55,10 +57,13 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <a class="dropdown-item" href="/<?php echo ROOT ?>/customer/showProfile.php">View Profile</a>
-        
+         <a class="dropdown-item" href="/<?php echo ROOT ?>/customer/servicetype.php">View Despatchers Available</a>  
+		 <a class="dropdown-item" href="/<?php echo ROOT ?>/customer/viewBooking.php">View Booking</a>  
           <a class="dropdown-item" href="/<?php echo ROOT ?>/customer/feedbackForm.php">Give Feedback</a>  
+		  
     </div>
     </li>
+	<?php }?>
 	
 		<li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,8 +73,21 @@
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
         <a class="dropdown-item" href="/<?php echo ROOT ?>/orders/orderMain.php">Main</a>
 		<a class="dropdown-item" href="/<?php echo ROOT ?>/orders/viewDespatcher.php">View Despatcher</a>
+		<a class="dropdown-item" href="/<?php echo ROOT ?>/orders/viewVouchers.php">View Vouchers</a>
     </div>
     </li>
+	<?php if (IsInRole('Customer')) { ?>
+		<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Restaurant</span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/Restaurant/NEW Restaurant/menuFood.php">Main</a>
+
+    </div>
+    </li>
+	<?php }?>
 
     <li class="nav-item dropdown" style="display:none">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

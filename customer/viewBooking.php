@@ -1,7 +1,7 @@
 
+
 <?php include '../header.php';
 $a = $_SESSION['username'];?>
-<?php CheckRole('Customer') ?>
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -12,7 +12,13 @@ $a = $_SESSION['username'];?>
   </ol>
   <?php
    //SQL query
-    $query = "SELECT * FROM user where username = '$a'; " or die(mysqli_connect_error());
+     $querya = "SELECT * FROM user WHERE UserName = '$a' ; " or die(mysqli_connect_error());
+
+    $result = mysqli_query($link, $querya);
+	while ($row = mysqli_fetch_array($result)) {
+	$b = $row["Id"];
+	}
+    $query = "SELECT * FROM orders where UserId = '$b'; " or die(mysqli_connect_error());
 
     $result = mysqli_query($link, $query);
 
@@ -22,43 +28,67 @@ $a = $_SESSION['username'];?>
     while ($row = mysqli_fetch_array($result)) {
         echo '
   
-  	<h2>Your Profile:</h2>
+  	<h2>Your Order:</h2>
     <table border="1">
-        <tr>
-            <td>Username:</td>
+	<tr>
+            <td>Id:</td>
             <td>'
                
-           . $row["UserName"].
-                
-            '</td>
-        </tr>
-		<tr>
-            <td>Email:</td>
-            <td>'
-               
-           . $row["Email"].
+           . $row["Id"].
                 
             '</td>
         </tr>
         <tr>
-            <td>Phone number:</td>
+            <td>User Id:</td>
             <td>'
                
-           . $row["Phone"].
+           . $row["UserId"].
                 
             '</td>
         </tr>
 		<tr>
-            <td>Address:</td>
+            <td>Restaurant Id:</td>
             <td>'
                
-           . $row["Address"].
+           . $row["RestaurantId"].
+                
+            '</td>
+        </tr>
+        <tr>
+            <td>Despatcher Id:</td>
+            <td>'
+               
+           . $row["DespatcherId"].
+                
+            '</td>
+        </tr>
+		<tr>
+            <td>Status :</td>
+            <td>'
+               
+           . $row["Status"].
+                
+            '</td>
+        </tr>
+		<tr>
+            <td>Order Date:</td>
+            <td>'
+               
+           . $row["OrderDate"].
+                
+            '</td>
+        </tr>
+		<tr>
+            <td>Delivery Date:</td>
+            <td>'
+               
+           . $row["DeliveryDate"].
                 
             '</td>
         </tr>
 		 <tr>
             <td style="background-color:black">
-                <button onclick="window.location.href = \'updateCustomer.php?id=' . $row["Id"] . '\';">Edit</button>
+                <button onclick="window.location.href = \'orderDetails.php?id=' . $row["Id"] . '\';">More Details</button>
             </td>
            
         </tr>                 
