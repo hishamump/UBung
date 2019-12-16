@@ -18,18 +18,20 @@
         <?php }?>
     </div>
     </li>
-    <?php if (IsInRole(ADMIN)) { ?>
+    <?php if (IsInRole(ADMIN) or IsInRole(DESPATCHER) ) { ?>
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
         <span>Reports</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <?php if (IsInRole(ADMIN)) { ?>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/despatchers.php">Despatchers</a>
         <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/customers,.php">Customers</a>
-
         <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/orders.php">Orders</a>
-        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/registered,.php">Restaurants/Cafe...</a>        
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/registered,.php">Restaurants/Cafe...</a>
+        <?php }?>
+        <a class="dropdown-item" href="/<?php echo ROOT ?>/reports/despatcherEarn.php">Despatcher Earnings</a>
     </div>
     </li>
     <?php }?>
