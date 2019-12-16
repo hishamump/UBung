@@ -1,7 +1,4 @@
-<?php
-include 'dataConnection.php';
-?>
-
+<?php include '../header.php'; ?>
 <title>Cart</title>
 
 <div align="center">[<a href="foodMenu.php">Previous Page</a>]
@@ -21,7 +18,8 @@ include 'dataConnection.php';
 </tr>
 <tr>
 	<?php
-	$link = mysqli_connect("localhost","root","","ubung");
+	//$link = mysqli_connect("localhost","root","","ubung");
+	$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
 	$select = "select orderdetails.OrderId, product.Name, orderdetails.Quantity, orderdetails.Price FROM orderdetails JOIN product ON orderdetails.ProductId=product.Id";
 	$run = mysqli_query($link, $select);
 
@@ -61,3 +59,4 @@ include 'dataConnection.php';
 </center>
 </body>
 </html>
+<?php include '../footer.php'; ?>

@@ -1,14 +1,11 @@
-<?php
-include 'dataConnection.php';
-?>
-
+<?php include '../header.php'; ?>
 <?php
 
 if (isset($_POST["cart"]) ) {
 	$ProductId = $_POST['ProductId'];
 	$Quantity = $_POST['qty'];
 	$Price = $_POST['price'];
-	$total = $Quantity * $Price;
+	$total = $Quantity*$Price;
 
   	$query = "INSERT INTO orderdetails VALUES ('','$ProductId', '$Quantity', '$total')";
 	$result = mysqli_query($link,$query);
@@ -23,5 +20,5 @@ if (isset($_POST["cart"]) ) {
 	  {
 		echo"failed";
 	  }
-  
 ?>
+<?php include '../footer.php'; ?>

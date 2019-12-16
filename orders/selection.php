@@ -1,7 +1,4 @@
-<?php
-include 'dataConnection.php';
-?>
-
+<?php include '../header.php'; ?>
 <title>Despatcher</title>
 
 <div align="center">[<a href="ViewUpdateDelete.php">Previous Page</a>]
@@ -21,7 +18,8 @@ include 'dataConnection.php';
 </tr>
 <tr>
 	<?php
-	$link = mysqli_connect("localhost","root","","ubung");
+	//$link = mysqli_connect("localhost","root","","ubung");
+	$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
 	$select = "select * from user WHERE Role='Despatcher' ";
 	$run = mysqli_query($link, $select);
 
@@ -52,3 +50,4 @@ include 'dataConnection.php';
 </center>
 </body>
 </html>
+<?php include '../footer.php'; ?>

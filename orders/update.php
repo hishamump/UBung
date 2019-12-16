@@ -1,7 +1,4 @@
-<?php
-include 'dataConnection.php';
-?>
-
+<?php include '../header.php'; ?>
 <?php
 			
 	$Quantity = $_POST['qty'];
@@ -35,3 +32,4 @@ include 'dataConnection.php';
 		echo"failed";
 	  }
 ?>
+<?php include '../footer.php'; ?>

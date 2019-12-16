@@ -1,7 +1,4 @@
-<?php
-include 'dataConnection.php';
-?>
-
+<?php include '../header.php'; ?>
 <?php
 			$OrderId = $_POST['OrderId'];
 
@@ -18,3 +15,4 @@ include 'dataConnection.php';
 		echo"failed";
 	  }
 ?>
+<?php include '../footer.php'; ?>

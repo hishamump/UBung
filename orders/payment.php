@@ -1,6 +1,4 @@
-<?php
-include 'dataConnection.php';
-?>
+<?php include '../header.php'; ?>
 <title>Receipt</title>
 
 <div align="center">[<a href="orderMain.php">Previous Page</a>]
@@ -17,7 +15,8 @@ include 'dataConnection.php';
 </tr>
 <tr>
 	<?php
-	$link = mysqli_connect("localhost","root","","ubung");
+	//$link = mysqli_connect("localhost","root","","ubung");
+	$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
 	$select = "select orderdetails.OrderId, product.Name, orderdetails.Quantity, orderdetails.Price FROM orderdetails JOIN product ON orderdetails.ProductId=product.Id";
 	$run = mysqli_query($link, $select);
 
@@ -48,8 +47,7 @@ include 'dataConnection.php';
 		$insert = "INSERT INTO voucher VALUES ('','','')";
 		$result = mysqli_query($link,$insert); 
 		}
-	}
-	  if($result)
+	if($result)
 	  {
 	  echo "<script>alert('Get 2 free Voucher!')</script>";
 	  }
@@ -57,6 +55,12 @@ include 'dataConnection.php';
 	  {
 		echo"failed";
 	  }
+		
+		
+		
+		
+	}
+	  
 ?>
 <br>
 <form action="orderMain.php" method="post">
@@ -65,3 +69,4 @@ include 'dataConnection.php';
 </center>
 </body>
 </html>
+<?php include '../footer.php'; ?>

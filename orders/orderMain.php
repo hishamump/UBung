@@ -1,3 +1,4 @@
+<?php include '../header.php'; ?>
 <!DOCTYPE html>
 <html>
 <title>Manage Order</title>
@@ -16,3 +17,4 @@
 
 </body>
 </html>
+<?php include '../footer.php'; ?>
