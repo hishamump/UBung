@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>View Restaurant Data</title>
+    <title>View Food Data</title>
 </head>
 <?php include 'dataConnection.php';?>
 <body>
@@ -13,7 +13,11 @@
         <table>
             <tr>
                 <td>Food Name:</td>
-                <td><input type="text" name="Foodname"></td>
+                <td><input type="text" name="Name"></td>
+            </tr>
+			<tr>
+                <td>Description:</td>
+                <td><input type="text" name="Description"></td>
             </tr>
 			<tr>
                 <td>Price:</td>
@@ -25,7 +29,9 @@
             </tr>
             <tr>
                 <td><input type="submit" name="submit" value="Submit"></td>
-                <td></td>
+                <td><form action="orderMain.php" method="post">
+				<button class="v_btn" type="submit">Go to Main Page</button>
+				</form></td>
             </tr>
         </table>
     </form>

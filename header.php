@@ -41,9 +41,9 @@
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" id ="frmSearch" method="post" action="/<?php echo ROOT?>/announcements/">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search announcements..." aria-label="Search" aria-describedby="basic-addon2">
+        <input style="display:none" type="text" class="form-control" placeholder="Search announcements..." aria-label="Search" aria-describedby="basic-addon2">
         <div class="input-group-append">
-          <button class="btn btn-primary" type="button" onclick="document.getElementById('frmSearch').submit();" >
+          <button class="btn btn-primary" type="button" onclick="document.getElementById('frmSearch').submit();" title="Go to Announcements">
             <i class="fas fa-search"></i>
           </button>
         </div>

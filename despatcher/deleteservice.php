@@ -14,6 +14,7 @@
 
 
     <?php
+	
     $uid = 0;
     if (isset($_GET['id'])) {
         $uid = $_GET["id"];
@@ -40,6 +41,7 @@ if($result)
 	        {
 		        
                     echo("deleted successfully");
+					header( "refresh:5;url=viewservices.php" );
 					
 		}
 		else 

@@ -1,7 +1,7 @@
     </div>
       <!-- /.container-fluid -->
       <!-- Sticky Footer -->
-      <footer class="sticky-footer">
+      <footer >
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright © UBung 2019</span>

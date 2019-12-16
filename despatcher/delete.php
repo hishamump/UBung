@@ -8,7 +8,7 @@
     <title>Delete User</title>
 </head>
 <?php include '../selectDB.php'; ?>
-<?php header( "refresh:2;url=dashboard.php" );?>
+<?php header( "refresh:2;url=new.php" );?>
 <body>
 
     <?php

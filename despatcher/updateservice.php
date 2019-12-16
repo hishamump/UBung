@@ -1,5 +1,6 @@
 <?php include '../header.php';?>
-  <!-- Breadcrumbs-->
+
+ <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a href="../index.php">Dashboard</a>
@@ -7,34 +8,46 @@
     <li class="breadcrumb-item active">OrderMain</li>
   </ol>
   
-  <h2>Update Menu</h2>
-  
-  <?php include '../selectDB.php'; ?>
+<h1>Update Service</h1>
+
+<?php include '../selectDB.php'; ?>
 
 <body>
-   
-    <?php
+<?php
+
     $submit = '';
     if (isset($_POST['submit'])) {
         $submit = $_POST["submit"];
     }
-    $uid = 0;
+    $aid = 0;
     if (isset($_GET['id'])) {
-        $uid = $_GET["id"];
+        $aid = $_GET["id"];
     }    
     if ($submit == 'Update'){
-        $uid = $_POST["id"];
+        $aid = $_POST["id"];
         //Collect and save updateed information
-       
-    
-    
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $status = $_POST["status"];
-        $role = $_POST["role"];        
+		
+		$services = $_POST['services'];
+     foreach ($_POST['services'] as $selection =>$value) {
+			$services[]=$value;
+		}
+//$arr = implode("",$genre);
+
+$services = array_unique($services);
+$column= implode(", ", $services);
+
+
+ if ($aid > 0) {
+        $query = "SELECT dispatcherservice.ServiceId FROM dispatcherservice CROSS JOIN user WHERE dispatcherservice.DispatcherId = $aid " or die(mysqli_connect_error());
+
+        $result = mysqli_query($link, $query);
+        if ($row = mysqli_fetch_array($result)) {
+	      
+    $a = $row["ServiceId"];
+		}
+ }
         
-        $strSQL = "UPDATE user SET username='$name', email='$email', status='$status',role='$role' WHERE id=$uid";
-       
+        $strSQL = "UPDATE service SET Name='$column' WHERE Id= '$a'";
         $result = mysqli_query($link, $strSQL);
         if($result) 
         {
@@ -47,17 +60,22 @@
     }
 
 
-    if ($uid > 0) {
-        $query = "SELECT * FROM user WHERE id = $uid " or die(mysqli_connect_error());
+    if ($aid > 0) {
+        $query = "SELECT dispatcherservice.ServiceId FROM dispatcherservice CROSS JOIN user WHERE dispatcherservice.DispatcherId = $aid " or die(mysqli_connect_error());
 
         $result = mysqli_query($link, $query);
-        if (mysqli_num_rows($result) == 1){
-            $row = mysqli_fetch_assoc($result);
+        if ($row = mysqli_fetch_array($result)) {
+	      
+    $a = $row["ServiceId"];
+	
+	
+
+		
+
     ?>
-    <h3>Update <?php echo $row["UserName"] ?> Data</h3>
-    <form action="update.php" method="POST">
-        <form action="serviceread.php" method="POST">
-  Services: <select id="mySelect" name="services[]" multiple size="7">
+    <h3>Update  Data</h3>
+    <form action="updateservice.php" method="POST">
+       Services: <select id="mySelect" name="services[]" multiple size="7">
     <option>Deliver Ice Cream</option>
     <option>Deliver Sandwich</option>
     <option>Deliver Noodles</option>
@@ -66,19 +84,17 @@
     <option>Deliver Drinks</option>
     <option>Fantasy</option>
   </select><br><br>
-  <br><input type="submit">
-  
-        <input type="hidden" id="" name="id" value='<?php echo $row["Id"]?>'>
+  <br><input type="submit" name="submit" value="Update">
+        <input type="hidden" id="" name="id" value='<?php echo $aid ?>'>
     </form>
     <?php 
         }else{
-            echo '<p style="background-color: #F0CCC4">User not found</p>';
+            echo '<p style="background-color: #F0CCC4">Announcement not found</p>';
         }
     }else{
         echo '<p style="background-color: #F0CCC4">Please provide user id</p>';
     }
-
-    function isChecked($value, $compare){
+	  function isChecked($value, $compare){
         if ($value == $compare){
             return "checked";
         }else{
@@ -98,5 +114,5 @@
     } 
     mysqli_close($link);
     ?>
-  
+
 <?php include '../footer.php';?>

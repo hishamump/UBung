@@ -1,5 +1,5 @@
 <?php include '../header.php';?>
-
+<?php CheckRole(ADMIN) ?>
 <h1>Delete Announcement</h1>
 <?php
     $aid = 0;
@@ -14,11 +14,11 @@
 
         //Check whether the insert was successful or not
         if ($result) {
-            echo ("Announcement deleted successfully");
+            SuccessMessage("Announcement deleted successfully");
         } else {
-            die("Deletion failed" . mysqli_error($link));
+            ErrorMessage("Deletion failed" . mysqli_error($link));
         }
     }
     ?>
-
+    <button class="btn btn-primary" onclick="window.location.href = 'manage.php';"> &lt; Manage List</button>
 <?php include '../footer.php';?>

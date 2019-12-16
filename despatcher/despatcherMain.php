@@ -1,21 +1,9 @@
-<?php
-	session_start(); 
-
-	if (!isset($_SESSION['username'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: login.php');
-	}
-
-	if (isset($_GET['logout'])) {
-		session_destroy();
-		unset($_SESSION['username']);
-		header("location: login.php");
-	}
-$ll = $_SESSION['username'];
-?>
 
 
-<?php include '../header.php';?>
+
+<?php include '../header.php';
+$ll = $_SESSION['username'];?>
+<?php CheckRole('Despatcher') ?>
 
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
@@ -25,7 +13,7 @@ $ll = $_SESSION['username'];
     <li class="breadcrumb-item active">Despatcher</li>
   </ol>
   
-  <h2>Despatchers</h2>
+  <h2>My Profile</h2>
 <?php
    
     //SQL query

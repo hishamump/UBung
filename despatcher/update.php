@@ -7,9 +7,9 @@
     <li class="breadcrumb-item active">OrderMain</li>
   </ol>
   
-  <h2>Update Menu</h2>
   
-  <?php include '../selectDB.php'; ?>
+  
+ 
 
 <body>
    
@@ -75,8 +75,9 @@
 			<tr>
                 <td>Availability:</td>
                 <td><input type="text" name="status"   value='<?php  echo $row["Status"] ?>'></td>
-                    
+                 <td>(1 - Available , 0 - Not Available)</td>   
                 </td>
+		
             </tr>
 			 <tr>
                 <td><input type="submit" name="submit" value="Update"></td>

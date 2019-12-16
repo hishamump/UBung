@@ -1,4 +1,7 @@
-<?php include '../dataConnection.php'; ?>
+<?php 
+    include '../dataConnection.php'; 
+    include '../dbName.php';
+?>
 <?php
 //==================================
 $sql = "DROP DATABASE UBung";

@@ -1,26 +1,29 @@
 <?php include '../header.php'; ?>
-
+<?php CheckRole(ADMIN) ?>
 <?php
 $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/" . ROOT . "/uploads/";
+$fileName = "default.jpg";
 // Check if image file is a actual image or fake image
 if (isset($_POST["submit"]) && $_FILES["fileToUpload"]["tmp_name"] != "") {
-    $fileName = basename($_FILES["fileToUpload"]["name"]);
+    if (basename($_FILES["fileToUpload"]["name"]) != ""){
+        $fileName = basename($_FILES["fileToUpload"]["name"]);
+    }
     $target_file = $target_dir . $fileName;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        //echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+        ErrorMessage("File is not an image");  
         $uploadOk = 0;
     }
 
     // Check file size // 6k
     if ($_FILES["fileToUpload"]["size"] > 600000) {
-        echo "Sorry, your file is too large.";
+        ErrorMessage("Sorry, your file is too large");
         $uploadOk = 0;
     }
 
@@ -29,18 +32,18 @@ if (isset($_POST["submit"]) && $_FILES["fileToUpload"]["tmp_name"] != "") {
         $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif"
     ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        ErrorMessage("Sorry, only JPG, JPEG, PNG & GIF files are allowed");
         $uploadOk = 0;
     }
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+        ErrorMessage("Sorry, your file was not uploaded.");
         // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+            SuccessMessage("The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.");
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            ErrorMessage("Sorry, there was an error uploading your file.");
         }
     }
 }
@@ -53,7 +56,6 @@ if (isset($_POST['submit'])) {
 }
 
 if ($submit != '') {
-    echo "***";
     $uid = $_POST["id"];
     //Collect and save updateed information
     $title = "";
@@ -64,13 +66,13 @@ if ($submit != '') {
         $description = $_POST["description"];
     }
 
-    $strSQL = "insert into Announcement (Title, Description, Image, UserId) values 
-        ('$title', '$description', '$fileName', 1)"
+    $strSQL = "insert into Announcement (Title, Description, Image, UserId, ADate) values 
+        ('$title', '$description', '$fileName', 1, now())"
         or die(mysqli_connect_error());
 
     $result = mysqli_query($link, $strSQL);
     if ($result) {
-        echo ("Data Inserted successfully");
+        SuccessMessage("Data Inserted successfully");
     } else {
         die("Update failed" . mysqli_error($link));
     }
