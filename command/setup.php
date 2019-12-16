@@ -4,12 +4,12 @@
 ?>
 <?php
 $sql = "
-INSERT INTO `User` (`UserName`, `Password`, `Address`, `Phone`, `Email`, `Role`, `Status`) 
-VALUES (`Admin`, `123`, `UMP-Gambang`, `011487598`, `admin@ubung.com`, `Admin`, `1`) 
+INSERT INTO User (UserName, Password, Address, Phone, Email, Role, Status) 
+VALUES ('Admin', '123', 'UMP-Gambang', '011487598', 'admin@ubung.com', 'Admin') 
 ";
 if (mysqli_query($link, $sql)) {
-    echo "Table Announcement created successfully<br>";
+    echo "Admin added successfully<br>";
 } else {
-    echo 'Error creating table: ' . mysqli_error($link) . "<br>";
+    echo 'Error add admin: ' . mysqli_error($link) . "<br>";
 }
 ?>
