@@ -15,11 +15,20 @@
         }
     }
 
-    function CheckRole($role) {
-        if ($_SESSION['role'] != $role) {
-            echo UNAUTHORIZED;
-            exit;
+    function CheckRole($roles) {
+        if (is_array($roles))
+        {
+            foreach($roles as $role){
+                if ($_SESSION['role'] == $role) {
+                    return;
+                }
+            }
         }
+        else if ($_SESSION['role'] == $roles) {
+            return;
+        }
+        echo UNAUTHORIZED;
+        exit;
     }   
     
     function ErrorMessage($message) {
