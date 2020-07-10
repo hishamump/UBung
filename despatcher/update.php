@@ -6,13 +6,7 @@
     </li>
     <li class="breadcrumb-item active">OrderMain</li>
   </ol>
-  
-  
-  
- 
-
-<body>
-   
+ <body>
     <?php
     $submit = '';
     if (isset($_POST['submit'])) {

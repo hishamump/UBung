@@ -24,8 +24,6 @@ $ll = $_SESSION['username'];?>
     //Loop the recordset $rs
     echo "<table border='1'>";
 	
-	
-	
     while ($row = mysqli_fetch_array($result)) {
         echo '
         

@@ -18,7 +18,4 @@
 	<br><input type="submit">
   
 </form>
-
-
-
 <?php include '../footer.php';?>

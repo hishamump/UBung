@@ -10,47 +10,34 @@
 <?php include '../selectDB.php'; ?>
 
 <body>
-
-
-
     <?php
-	
     $uid = 0;
     if (isset($_GET['id'])) {
         $uid = $_GET["id"];
     }
     if ($uid > 0) {
-     
-     $querya = "SELECT ServiceId FROM dispatcherservice WHERE DispatcherId = $uid";
-	 $result = mysqli_query($link, $querya);
-  
-while ($row = mysqli_fetch_assoc($result)) {
-	      
-    $a = $row["ServiceId"];
-$queryy = "DELETE FROM service WHERE Id = $a";
-	 $result = mysqli_query($link, $queryy);
-	 $query = "DELETE FROM dispatcherservice WHERE DispatcherId = $uid";
-	 $result = mysqli_query($link, $query);
-	
-}
-
-	
+         $querya = "SELECT ServiceId FROM dispatcherservice WHERE DispatcherId = $uid";
+        $result = mysqli_query($link, $querya);
+    
+        while ($row = mysqli_fetch_assoc($result)) {
+                
+            $a = $row["ServiceId"];
+            $queryy = "DELETE FROM service WHERE Id = $a";
+            $result = mysqli_query($link, $queryy);
+            $query = "DELETE FROM dispatcherservice WHERE DispatcherId = $uid";
+            $result = mysqli_query($link, $query);
+        }
 	}
 
-if($result) 
-	        {
-		        
-                    echo("deleted successfully");
-					header( "refresh:5;url=viewservices.php" );
-					
-		}
-		else 
-	        {
-			        
-	            die("delete failed");
-	        }
-			
-			
+    if($result) 
+    {
+        echo("deleted successfully");
+        header( "refresh:5;url=viewservices.php" );
+    }
+	else 
+    {
+        die("delete failed");
+    }
 ?>
 </body>
 

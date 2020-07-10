@@ -58,33 +58,26 @@ $column= implode(", ", $services);
             die("Update failed" . mysqli_error($link));
         }
     }
-
-
     if ($aid > 0) {
         $query = "SELECT dispatcherservice.ServiceId FROM dispatcherservice CROSS JOIN user WHERE dispatcherservice.DispatcherId = $aid " or die(mysqli_connect_error());
 
         $result = mysqli_query($link, $query);
         if ($row = mysqli_fetch_array($result)) {
-	      
-    $a = $row["ServiceId"];
-	
-	
-
-		
-
+        $a = $row["ServiceId"];
     ?>
     <h3>Update  Data</h3>
     <form action="updateservice.php" method="POST">
-       Services: <select id="mySelect" name="services[]" multiple size="7">
-    <option>Deliver Ice Cream</option>
-    <option>Deliver Sandwich</option>
-    <option>Deliver Noodles</option>
-    <option>Deliver Burger</option>
-	<option>Deliver Waffle</option>
-    <option>Deliver Drinks</option>
-    <option>Fantasy</option>
-  </select><br><br>
-  <br><input type="submit" name="submit" value="Update">
+       Services: 
+        <select id="mySelect" name="services[]" multiple size="7">
+            <option>Deliver Ice Cream</option>
+            <option>Deliver Sandwich</option>
+            <option>Deliver Noodles</option>
+            <option>Deliver Burger</option>
+            <option>Deliver Waffle</option>
+            <option>Deliver Drinks</option>
+            <option>Fantasy</option>
+        </select><br><br>
+      <br><input type="submit" name="submit" value="Update">
         <input type="hidden" id="" name="id" value='<?php echo $aid ?>'>
     </form>
     <?php 

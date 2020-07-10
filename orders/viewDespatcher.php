@@ -14,7 +14,7 @@
 <tr>
 	<?php
 	//$link = mysqli_connect("localhost","root","","ubung");
-	$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
+	$link = mysqli_connect("localhost", "root", "", "", "3306");
 	$select = "select * from user WHERE Role='Despatcher' ";
 	$run = mysqli_query($link, $select);
 

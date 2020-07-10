@@ -19,7 +19,8 @@
 <tr>
 	<?php
 	//$link = mysqli_connect("localhost","root","","ubung");
-	$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
+	//$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
+	$link = mysqli_connect("localhost", "root", "", "", "3306");
 	$select = "select orderdetails.OrderId, product.Name, orderdetails.Quantity, orderdetails.Price FROM orderdetails JOIN product ON orderdetails.ProductId=product.Id";
 	$run = mysqli_query($link, $select);
 
