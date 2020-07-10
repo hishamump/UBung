@@ -1,7 +1,4 @@
 <?php
-
-
-
 	session_start(); 
 
 	if (!isset($_SESSION['username'])) {
@@ -32,11 +29,11 @@ $a = $_SESSION['username'];
     $d = $_POST["date"];
 	
     $query = "SELECT * FROM user where username = '$a'; " or die(mysqli_connect_error());
-	 $result = mysqli_query($link, $query);
-	 while ($row = mysqli_fetch_array($result)){
-		 $a = $row["Id"];
-		 echo $a;
-	 }
+    $result = mysqli_query($link, $query);
+    while ($row = mysqli_fetch_array($result)){
+      $a = $row["Id"];
+      echo $a;
+    }
 	 ?>
 	 <?php
 		
