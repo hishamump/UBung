@@ -1,4 +1,19 @@
 <?php include '../header.php'; ?>
+<style>
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  padding: 15px;
+}
+</style>
 <title>Food Menu</title>
 
 <div align="center">[<a href="orderMain.php">Previous Page</a>]
@@ -7,7 +22,9 @@
 <html>
 <body>
 <center>
+
 <table border="0" align="center">
+<form action="addtocart.php" method="POST">
 <tr>
 	<th>Name</th>
 	<th>Description</th>
@@ -16,36 +33,47 @@
 	<th>Quantity</th>
 	<th>Add to Cart</th>
 </tr>
-<tr>
 	<?php
-	//$link = mysqli_connect("localhost","root","","ubung");
-	//$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
-	$link = mysqli_connect("localhost", "root", "", "", "3306");
+	$conn = mysqli_connect("localhost", "root", "", "ubung");
 
-	$select = "select * FROM product JOIN restaurant ON product.RestaurantId=restaurant.Id";
-	$run = mysqli_query($link, $select);
-
-	while($row = mysqli_fetch_array($run)){
-		$ProductId		= $row['Id'];
-		$Name    		= $row['Name'];
-		$Description	= $row['Description'];
-		$RName		   	= $row['RName'];
-		$Price		   	= $row['Price'];
+	$query = "SELECT * FROM product INNER JOIN restaurant ON product.RestaurantId=restaurant.Id";
+	$result = $conn->query($query);
+	if (mysqli_num_rows($result)) {
+		while($row = mysqli_fetch_assoc($result)){
+			/*$ProductId		= $row['Id'];
+			$Name    		= $row['Name'];
+			$Description	= $row['Description'];
+			$RName		   	= $row['RName'];
+			$Price		   	= $row['Price']; */
+			echo "<tr>";
+			echo "<td>" . $row['Name'] . "</td>";
+			echo "<td>" . $row['Description'] . "</td>";
+			echo "<td>" . $row['RName'] . "</td>";
+			echo "<td>" . $row['Price'] . "</td>";
+			echo "<td><input type='number' name='qty'></td>";
+			echo "<td style='display: none;'><input type='hidden' name='ProductId' value='" . $row['Id'] . "'></td>";
+			echo "<td style='display: none;'><input type='hidden' name='price' value='" . $row['Price'] . "'></td>";
+			echo "<td><input type='submit' name='submit' value='Add to Cart'></td>";
+			echo "</tr>";
 	?>
-	<td align="center"><?php echo $Name;?></td>
-	<td align="center"><?php echo $Description;?></td>
-	<td align="center"><?php echo $RName;?></td>
-	<td align="center"><?php echo $Price;?></td>
-	<form action="addtocart.php" method="post">
+	<!--<td align="center"><?php //echo $Name;?></td>
+	<td align="center"><?php //echo $Description;?></td>
+	<td align="center"><?php //echo $RName;?></td>
+	<td align="center"><?php //echo $Price;?></td> 
+	<form action="addtocart.php" method="POST">
 	<td align="center"><input type="number" name="qty" ></td>
-	<input type="hidden" name="ProductId" value=<?php echo $ProductId; ?> >
-	<input type="hidden" name="price" value=<?php echo $Price; ?> >
-	<td align="center"><input type="submit" name = "cart" value="Add to Cart">
-	</form>
-	<td></td>
-</tr>
-	<?php }  ?>
+	<input type="hidden" name="ProductId" value=<?php //echo $ProductId; ?> >
+	<input type="hidden" name="price" value=<?php //echo $Price; ?> >
+	<td align="center"><input type="submit" name="cart" value="Add to Cart"> -->
+	
+<?php 
+		}
+	}
+
+	  ?>
+</form>
 </table>
+
 <br>
 <form action="ViewUpdateDelete.php" method="post">
 <button class="cart" type="submit">View Cart</button>
