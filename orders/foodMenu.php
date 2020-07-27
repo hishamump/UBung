@@ -15,7 +15,6 @@ th, td {
 }
 </style>
 <title>Food Menu</title>
-
 <div align="center">[<a href="orderMain.php">Previous Page</a>]
 <h1 align="center">Food Menu</h1>
 
@@ -51,6 +50,7 @@ th, td {
 			echo "<td>" . $row['RName'] . "</td>";
 			echo "<td>" . $row['Price'] . "</td>";
 			echo "<td><input type='number' name='qty'></td>";
+			echo "<td style='display: none;'><input type='hidden' name='ResId' value='" . $row['RestaurantId'] . "'></td>";
 			echo "<td style='display: none;'><input type='hidden' name='ProductId' value='" . $row['Id'] . "'></td>";
 			echo "<td style='display: none;'><input type='hidden' name='price' value='" . $row['Price'] . "'></td>";
 			echo "<td><input type='submit' name='submit' value='Add to Cart'></td>";

@@ -1,4 +1,19 @@
 <?php include '../header.php'; ?>
+<style>
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  padding: 15px;
+}
+</style>
 <title>Cart</title>
 
 <div align="center">[<a href="foodMenu.php">Previous Page</a>]
@@ -8,46 +23,42 @@
 <body>
 <center>
 <table border="1" align="center">
+<form action="update.php" method="POST">
 <tr>
 	<th>OrderId</th>
 	<th>Food Name</th>
 	<th>Quantity</th>
 	<th>Price(RM)</th>
-	<th></th>
-	<th></th>
+	<th>Action</th>
 </tr>
-<tr>
-	<?php
-	//$link = mysqli_connect("localhost","root","","ubung");
-	//$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
-	$link = mysqli_connect("localhost", "root", "", "", "3306");
-	$select = "select orderdetails.OrderId, product.Name, orderdetails.Quantity, orderdetails.Price FROM orderdetails JOIN product ON orderdetails.ProductId=product.Id";
-	$run = mysqli_query($link, $select);
+<?php
+	$username = $_SESSION['username'];
 
-	while($row = mysqli_fetch_array($run)){
-		$OrderId	= $row['OrderId'];
-		$Name    	= $row['Name'];
-		$Quantity	= $row['Quantity'];
-		$Price		= $row['Price'];
-	?>
-	<td align="center"><?php echo $OrderId;?></td>
-	<td align="center"><?php echo $Name;?></td>
-	<td align="center"><?php echo $Quantity;?></td>
-	<td align="center"><?php echo $Price;?></td>
-	<form action="update.php" method="post">
-	<td align="center">
-		<input type="hidden" name="OrderId" value=<?php echo $OrderId; ?> >
-		<input type="hidden" name="Price" value=<?php echo $Price; ?> >
-		<input type="hidden" name="Quantity" value=<?php echo $Quantity; ?> >
-		<input type="number" name = "qty" placeholder="0">
-		<input type="submit" value="Update"></td>
-	</form>
-		<form action="delete.php" method="post">
-			<input type="hidden" name="OrderId" value=<?php echo $OrderId; ?> >
-	<td align="center"><input type="submit" name = "Delete" value="Delete"></td>
-	</form>
-</tr>
-	<?php }  ?>
+	$conn = mysqli_connect("localhost", "root", "", "ubung");
+	$query = "SELECT * FROM user WHERE UserName = '$username'";
+	$result = $conn->query($query);
+	if($result){
+		$row = mysqli_fetch_assoc($result);
+		$userID = $row['Id'];
+	}
+	$query2 = "SELECT orderdetails.OrderId AS Id, product.Name, orderdetails.Quantity, orderdetails.Price AS total FROM orders JOIN orderdetails ON orders.Id = orderdetails.OrderId JOIN product ON orderdetails.ProductId = product.Id WHERE UserId = '$userID'";
+	$result2 = $conn->query($query2);
+	if (mysqli_num_rows($result2)) {
+		while ($row = mysqli_fetch_assoc($result2)){
+			echo "<tr>";
+			echo "<td>" . $row['Id'] . "</td>";
+			echo "<td>" . $row['Name'] . "</td>";
+			echo "<td>" . $row['Quantity'] . "</td>";
+			echo "<td>" . $row['total'] . "</td>";
+			echo "<td><button>Delete</button></td>";
+			echo "</tr>";
+		}
+	}
+	else{
+		echo "FAil";
+	}
+?>
+</form>
 </table>
  <br>
 <form action="selection.php" method="post">
