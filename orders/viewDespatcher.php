@@ -1,4 +1,19 @@
 <?php include '../header.php'; ?>
+<style>
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  padding: 15px;
+}
+</style>
 <title>Despatcher List</title>
 <div align="center">[<a href="orderMain.php">Previous Page</a>]
 <h1 align="center">Despatcher List</h1>
