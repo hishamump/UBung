@@ -22,8 +22,9 @@ th, td {
 <html>
 <body>
 <center>
+
 <table border="1" align="center">
-<form action="update.php" method="POST">
+<!--<form action="update.php" method="POST"> -->
 <tr>
 	<th>OrderId</th>
 	<th>Food Name</th>
@@ -45,19 +46,25 @@ th, td {
 	$result2 = $conn->query($query2);
 	if (mysqli_num_rows($result2)) {
 		while ($row = mysqli_fetch_assoc($result2)){
-			echo "<tr>";
-			echo "<td>" . $row['Id'] . "</td>";
-			echo "<td>" . $row['Name'] . "</td>";
-			echo "<td>" . $row['Quantity'] . "</td>";
-			echo "<td>" . $row['total'] . "</td>";
-			echo "<td><button>Delete</button></td>";
-			echo "</tr>";
+					    $str = "";
+		    $str = "<tr>";
+		    $str = "<form action=delete.php method='POST'>";
+		    $str .= "<td style='display:none;'><input name='oID' value='" . $row['Id'] . "'/>";
+		    $str .= "<td>" . $row['Id'] . "</td>";
+		    $str .= "<td>" . $row['Name'] . "</td>";
+		    $str .= "<td>" . $row['Quantity'] . "</td>";
+		    $str .= "<td>" . $row['total'] . "</td>";
+		    $str .= "<td><input type='submit' value='DELETE'/>";
+		    $str .="</form>";
+		    $str .= "</tr>";
+		    echo $str;
 		}
 	}
 	else{
 		echo "FAil";
 	}
 ?>
+<!--</form> -->
 </form>
 </table>
  <br>
