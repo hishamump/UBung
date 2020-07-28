@@ -10,7 +10,6 @@
 <?php include '../selectDB.php'; ?>
 <?php header( "refresh:2;url=new.php" );?>
 <body>
-
     <?php
     $uid = 0;
     if (isset($_GET['id'])) {
