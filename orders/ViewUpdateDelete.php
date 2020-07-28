@@ -37,7 +37,7 @@ th, td {
 		$row = mysqli_fetch_assoc($result);
 		$userID = $row['Id'];
 	}
-	$query2 = "SELECT orderdetails.OrderId AS Id, product.Name, orderdetails.Quantity, orderdetails.Price AS total FROM orders JOIN orderdetails ON orders.Id = orderdetails.OrderId JOIN product ON orderdetails.ProductId = product.Id WHERE UserId = '$userID'";
+	$query2 = "SELECT orderdetails.OrderId AS Id, product.Name, orderdetails.Quantity, orderdetails.Price AS total FROM orders JOIN orderdetails ON orders.Id = orderdetails.OrderId JOIN product ON orderdetails.ProductId = product.Id WHERE UserId = '$userID' AND Status = '0'";
 	$result2 = $conn->query($query2);
 	if (mysqli_num_rows($result2)) {
 		while ($row = mysqli_fetch_assoc($result2)){
@@ -50,21 +50,24 @@ th, td {
 		    $str .= "<td>" . $row['Quantity'] . "</td>";
 		    $str .= "<td>" . $row['total'] . "</td>";
 		    $str .= "<td><input type='submit' value='DELETE'/>";
-		    $str .="</form>";
+		    $str .= "</form>";
 		    $str .= "</tr>";
 		    echo $str;
 		}
+		echo "</table>";
+		echo "<br>";
+		echo "<form action='selection.php' method='POST'>";
+		echo "<button class='payment' type='submit'>Select Dispatcher</button>";
+		echo "</form>";
 	}
 	else{
-		echo "FAil";
+		echo "</table>";
+		echo "<br>";
+		echo "<form action='selection.php' method='POST'>";
+		echo "<button class='payment' type='submit' disabled>Select Dispatcher</button>";
+		echo "</form>";
 	}
 ?>
-</form>
-</table>
- <br>
-<form action="selection.php" method="post">
-<button class="payment" type="submit">Select Despatcher</button>
-</form>
 <br>
 <form action="orderMain.php" method="post">
 <button class="v_btn" type="submit">Go to Main Page</button>
