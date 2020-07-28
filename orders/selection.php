@@ -1,4 +1,19 @@
 <?php include '../header.php'; ?>
+<style>
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  padding: 15px;
+}
+</style>
 <title>Despatcher</title>
 
 <div align="center">[<a href="ViewUpdateDelete.php">Previous Page</a>]
@@ -14,36 +29,30 @@
 	<th>Address</th>
 	<th>Phone</th>
 	<th>Email</th>
-	<th></th>
+	<th>Action</th>
 </tr>
-<tr>
-	<?php
-	//$link = mysqli_connect("localhost","root","","ubung");
-	//$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
-	$link = mysqli_connect("localhost", "root", "", "", "3306");
-	
-	$select = "select * from user WHERE Role='Despatcher' ";
-	$run = mysqli_query($link, $select);
-
-	while($row = mysqli_fetch_array($run)){
-		$Id 			= $row['Id'];
-		$Name			= $row['UserName'];
-		$Address    	= $row['Address'];
-		$Phone			= $row['Phone'];
-		$Email			= $row['Email'];
-	?>
-	<td align="center"><?php echo $Id;?></td>
-	<td align="center"><?php echo $Name;?></td>
-	<td align="center"><?php echo $Address;?></td>
-	<td align="center"><?php echo $Phone;?></td>
-	<td align="center"><?php echo $Email;?></td>
-	<form action="selection2.php" method="post">
-	<td align="center">
-		<input type="hidden" name="Id" value=<?php echo $Id; ?> >
-		<input type="submit" value="select"></td>
-	</form>
-</tr>
-	<?php }  ?>
+<?php 
+	$conn = mysqli_connect("localhost", "root", "", "ubung");
+	$sql = "SELECT * FROM user WHERE Role='Despatcher'";
+	$result = $conn->query($sql);
+	if ($result -> num_rows > 0){
+		while($row = $result -> fetch_assoc()){
+			$str = "";
+		    $str = "<tr>";
+		    $str = "<form action=selection2.php method='POST'>";
+		    $str .= "<td style='display:none;'><input name='dID' value='" . $row['Id'] . "'/>";
+		    $str .= "<td>" . $row['Id'] . "</td>";
+		    $str .= "<td>" . $row['UserName'] . "</td>";
+		    $str .= "<td>" . $row['Address'] . "</td>";
+		    $str .= "<td>" . $row['Phone'] . "</td>";
+		    $str .= "<td>" . $row['Email'] . "</td>";
+		    $str .= "<td><input type='submit' value='SELECT'/>";
+		    $str .="</form>";
+		    $str .= "</tr>";
+		    echo $str;
+		}
+	}
+?>
 </table>
 <br>
 <form action="orderMain.php" method="post">
