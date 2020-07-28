@@ -15,16 +15,12 @@ th, td {
 }
 </style>
 <title>Cart</title>
-
 <div align="center">[<a href="foodMenu.php">Previous Page</a>]
 <h1 align="center">Cart</h1>
-
 <html>
 <body>
 <center>
-
 <table border="1" align="center">
-<!--<form action="update.php" method="POST"> -->
 <tr>
 	<th>OrderId</th>
 	<th>Food Name</th>
@@ -34,7 +30,6 @@ th, td {
 </tr>
 <?php
 	$username = $_SESSION['username'];
-
 	$conn = mysqli_connect("localhost", "root", "", "ubung");
 	$query = "SELECT * FROM user WHERE UserName = '$username'";
 	$result = $conn->query($query);
@@ -46,7 +41,7 @@ th, td {
 	$result2 = $conn->query($query2);
 	if (mysqli_num_rows($result2)) {
 		while ($row = mysqli_fetch_assoc($result2)){
-					    $str = "";
+			$str = "";
 		    $str = "<tr>";
 		    $str = "<form action=delete.php method='POST'>";
 		    $str .= "<td style='display:none;'><input name='oID' value='" . $row['Id'] . "'/>";
@@ -64,7 +59,6 @@ th, td {
 		echo "FAil";
 	}
 ?>
-<!--</form> -->
 </form>
 </table>
  <br>
