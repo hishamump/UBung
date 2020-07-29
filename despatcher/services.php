@@ -31,7 +31,7 @@ $result = mysqli_query($link, $query);
             <tr>
               <td><?php echo $row["Name"] ?></td>
               <td><button class="btn btn-primary" onclick="window.location.href = 'updateservice.php?id=<?php echo $row["Id"] ?>';">Edit</button></td>
-              <td><button class="btn btn-danger" onclick="window.location.href = 'deleteservice.php?id=<?php echo $row["Id"] ?>';">Delete</button></td>
+              <td><button class="btn btn-danger" id="btn-confirm" onclick="window.location.href = 'deleteservice.php?id=<?php echo $row["Id"] ?>';">Delete</button></td>
             </tr>
           <?php } ?>
         </tbody>
