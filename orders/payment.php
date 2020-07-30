@@ -1,4 +1,29 @@
 <?php include '../header.php'; ?>
+<style>
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#totalcol {  
+  border: 1px solid #ddd;
+  text-align: right;
+}
+
+#dispatch {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  padding: 15px;
+}
+</style>
 <title>Receipt</title>
 
 <div align="center">[<a href="orderMain.php">Previous Page</a>]
@@ -7,63 +32,60 @@
 <html>
 <body>
 <center>
-<table border="1" align="center">
+<form onunload="updateDB()">
+<table>
 <tr>
 	<th>Food Name</th>
 	<th>Quantity</th>
 	<th>Price(RM)</th>
 </tr>
-<tr>
-	<?php
-	//$link = mysqli_connect("localhost","root","","ubung");
-	//$link = mysqli_connect("localhost","ca17100","ca17100","ca17100");
-	$link = mysqli_connect("localhost", "root", "", "", "3306");
-	
-	$select = "select orderdetails.OrderId, product.Name, orderdetails.Quantity, orderdetails.Price FROM orderdetails JOIN product ON orderdetails.ProductId=product.Id";
-	$run = mysqli_query($link, $select);
-
-	$FinalPrice=0;
-	while($row = mysqli_fetch_array($run)){
-		$OrderId	= $row['OrderId'];
-		$Name    	= $row['Name'];
-		$Quantity	= $row['Quantity'];
-		$Price		= $row['Price'];
-		$FinalPrice = $FinalPrice + $Price;
-	?>
-	<td align="center"><?php echo $Name;?></td>
-	<td align="center"><?php echo $Quantity;?></td>
-	<td align="center"><?php echo $Price;?></td>
-
-</tr>
-	<?php }  ?>
-<tr>
-	<th></th>
-	<th>Total Payment:</th>
-	<th><?php echo $FinalPrice;?></th>
-</tr>
-</table>
 <?php
-	if($FinalPrice>35)
-	{
-		for ($i=0; $i < 2; $i++) {
-		$insert = "INSERT INTO voucher VALUES ('','','')";
-		$result = mysqli_query($link,$insert); 
-		}
-	if($result)
-	  {
-	  echo "<script>alert('Get 2 free Voucher!')</script>";
-	  }
-	  else
-	  {
-		echo"failed";
-	  }
-		
-		
-		
-		
+	$username = $_SESSION['username'];
+	$conn = mysqli_connect("localhost", "root", "", "ubung");
+	$query = "SELECT * FROM user WHERE UserName = '$username'";
+	$result = $conn->query($query);
+	if($result){
+		$row = mysqli_fetch_assoc($result);
+		$userID = $row['Id'];
 	}
-	  
+	$query2 = "SELECT orders.Id AS orderID, orders.UserId, orders.Status, orders.DespatcherId AS dispatcherID, product.Id AS productID, product.Name AS foodName, orderdetails.Quantity AS quantity, orderdetails.Price AS price FROM orders JOIN orderdetails ON orders.Id = orderdetails.OrderId JOIN product ON orderdetails.ProductId = product.Id WHERE UserId = '$userID' AND Status = '1'";
+	$result2 = $conn->query($query2);
+	if($result2){
+		if (mysqli_num_rows($result2) > 0){
+			$totalprice = 0;
+			while($row = mysqli_fetch_assoc($result2)){
+				$str = "";
+			    $str = "<tr>";
+			    $str .= "<td>" . $row['foodName'] . "</td>";
+			    $str .= "<td>" . $row['quantity'] . "</td>";
+			    $str .= "<td>" . $row['price'] . "</td>";
+			    $str .= "</tr>";
+			    echo $str;
+			    $totalprice += $row['price'];
+				$disID = $row['dispatcherID'];
+			}
+			$query3 = "SELECT * FROM user WHERE Id = '$disID'";
+			$result3 = $conn->query($query3);
+			if($result3){
+				$fetchName = mysqli_fetch_array($result3);
+				$disName = $fetchName['UserName'];
+			}
+			echo "<tr>";
+			echo "<th colspan='2' id='totalcol'>Total</th>";
+			echo "<td>" . $totalprice . "</td>";
+			echo "</tr>";
+			echo "<tr>";
+			echo "<th>Dispatcher</th>";
+			echo "<td colspan='2' id='dispatch'>" . $disName . "</td>";
+			echo "</tr>";
+		}
+	}
+	else{
+		echo "fail";
+	}
 ?>
+</table>
+</form>
 <br>
 <form action="orderMain.php" method="post">
 <button class="v_btn" type="submit">Go to Main Page</button>
@@ -72,3 +94,11 @@
 </body>
 </html>
 <?php include '../footer.php'; ?>
+<script type="text/javascript">
+	function updateDB(){
+		<?php 
+			$query4 = "UPDATE orders SET Status = '2' WHERE UserId = '$userID' AND Status = '1'";
+			$result4 = $conn->query($query4);
+		?>
+	}
+</script>

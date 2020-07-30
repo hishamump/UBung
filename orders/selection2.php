@@ -8,7 +8,7 @@
 		while ($row = mysqli_fetch_array($result1)){
         	$userID = $row['Id'];
     	}
-    	$query2 = "UPDATE orders SET Status = '1', DespatcherId = '$DispatcherID' WHERE UserId = '$userID'";
+    	$query2 = "UPDATE orders SET Status = '1', DespatcherId = '$DispatcherID' WHERE UserId = '$userID' AND Status = '0'";
 		$result2 = $link->query($query2);
 		if($result2) {
 			echo "<script>alert('Dispatcher selected')</script>";
