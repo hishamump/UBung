@@ -31,3 +31,8 @@
     <a href="dropAnnouncement.php">Drop Announcement Now</a> <br /><br />
     <a href="dropTables.php">Drop All Tables Now</a> <br /><br />
 </div>
+
+<div style="background-color: khaki">
+    <h2 style="color: red; font-weight:bold">Fix Tables</h2>
+    <a href="AlterTableService.php">Add DispatcherId column to Service</a> <br /><br />
+</div>

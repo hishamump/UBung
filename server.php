@@ -80,6 +80,7 @@
 				$_SESSION['username'] = $row['UserName'];
 				$_SESSION['role'] = $row['Role'];
 				$_SESSION['success'] = "Welcome";
+				$_SESSION['UserId'] = $row['Id'];
 				
 				header('location: index.php');
 			} else {

@@ -1,32 +1,53 @@
-<?php include '../header.php';
-$ll = $_SESSION['username'];?>
-  <!-- Breadcrumbs-->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="../index.php">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item active">Services</li>
-  </ol>
-  
-  <h2>Available Services</h2>
- <?php 
-    $query = "SELECT * FROM user WHERE username = '$ll'; " or die(mysqli_connect_error());
-    $result = mysqli_query($link, $query);
-  
-    while ($row = mysqli_fetch_array($result)) {
-    $a = $row["Id"];
+<?php include '../header.php'; ?>
+<?php
+$uid = $_SESSION['UserId'];
+$query = "SELECT * FROM service WHERE DispatcherId=$uid" or die(mysqli_connect_error());
+$result = mysqli_query($link, $query);
+?>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    Your Services</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="width: 25%">Name</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <?php while ($row = mysqli_fetch_array($result)) { ?>
+            <tr>
+              <td><?php echo $row["Name"] ?></td>
+              <td><button class="btn btn-primary" onclick="window.location.href = 'updateservice.php?id=<?php echo $row["Id"] ?>';">Edit</button></td>
+              <td><button class="btn btn-danger" id="btn-confirm" onclick="window.location.href = 'deleteservice.php?id=<?php echo $row["Id"] ?>';">Delete</button></td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+<?php
+//Check whether the insert was successful or not
+if (!$result) {
+  ErrorMessage("Query failed" . mysqli_error($link));
 }
-  ?> 
-  
-  <form action="serviceread.php" method="POST">
-  Services: <select id="mySelect" name="services[]" multiple size="7">
-    <option>Deliver Ice Cream</option>
-    <option>Deliver Sandwich</option>
-    <option>Deliver Noodles</option>
-    <option>Deliver Burger</option>
-  	<option>Deliver Waffle</option>
-    <option>Deliver Drinks</option>
-    <option>Deliver Fast Food</option>
-  </select><br><br>
-  <br><input type="submit">
-<?php include '../footer.php';?>
+//Close the database connection
+mysqli_close($link);
+?>
+
+<?php include '../footer.php'; ?>

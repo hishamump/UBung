@@ -47,7 +47,7 @@
         <a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/viewBooking.php">Order List</a>
 		<a class="dropdown-item" href="/<?php echo ROOT ?>/reports/despatcherEarn.php">View Report</a>
 		<a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/addService.php">Add Service</a>
-		<a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/viewservices.php">Services</a>
+		<a class="dropdown-item" href="/<?php echo ROOT ?>/despatcher/services.php">Services</a>
            
     </div>
     </li>
