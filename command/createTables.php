@@ -12,7 +12,7 @@ $sql = "CREATE TABLE User (
     Phone VARCHAR(15), 
     Email VARCHAR(100) UNIQUE, 
     Role VARCHAR(10), 
-    Status BOOLEAN, 
+    Status TINYINT, 
     PRIMARY KEY(Id))";
 if (mysqli_query($link, $sql)) {
     echo "Table User created successfully<br>";
