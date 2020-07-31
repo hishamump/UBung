@@ -18,12 +18,12 @@ if (isset($_POST['submit'])){
 	if ($conn->connect_error){
 		die("Connection failed: " . $conn->connect_error);
 	}
-	// Status = 0 is for Cart entries
-	$query2 = "INSERT INTO orders (UserId,RestaurantId,DespatcherId,Status,OrderDate,DeliveryDate) VALUES ('$userID', '$resId', '', '0', '', '')";
+	// Status = 9 is for the Cart entries process, Status = 0 is to for items to be dispalyed in Cart
+	$query2 = "INSERT INTO orders (UserId,RestaurantId,DespatcherId,Status,OrderDate,DeliveryDate) VALUES ('$userID', '$resId', '', '9', '', '')";
 	$result2 = $conn->query($query2);
 	if($result2)
 	{
-		$query3 = "SELECT * FROM orders where UserId = '$userID' AND Status = '0'";
+		$query3 = "SELECT * FROM orders where UserId = '$userID' AND Status = '9'";
 		$result3 = $conn->query($query3);
 		if (mysqli_num_rows($result3)){
 			while($row = mysqli_fetch_assoc($result3)){
@@ -31,8 +31,12 @@ if (isset($_POST['submit'])){
 				$query4 = "INSERT INTO orderdetails (OrderId, ProductId, Quantity, Price) VALUES ('$orderID', '$ProductId', '$Quantity', '$total')";
 				$result4 = $conn->query($query4);
 				if ($result4){
-					echo "<script>alert('added to cart')</script>";
-	  				echo "<script>window.location.href='foodMenu.php'</script>";
+					$query5 = "UPDATE orders SET Status = '0' WHERE Status ='9'";
+					$result5 = $conn->query($query5);
+					if($result5){
+						echo "<script>alert('added to cart')</script>";
+	  					echo "<script>window.location.href='foodMenu.php'</script>";
+	  				}
 				}
 			}
 		}
