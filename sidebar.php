@@ -5,6 +5,14 @@
         <span>Dashboard</span>
     </a>
     </li>
+    <?php if (IsInRole(ADMIN)) { ?>
+    <li class="nav-item active">
+    <a class="nav-link" href="/<?php echo ROOT ?>/admin/approvedispatcher.php">
+        <i class="fas fa-fw fa-user-plus"></i>
+        <span>Approve User</span>
+    </a>
+    </li>
+    <?php }?>
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
