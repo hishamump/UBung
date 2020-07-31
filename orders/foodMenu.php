@@ -23,7 +23,6 @@ th, td {
 <center>
 
 <table border="0" align="center">
-<form action="addtocart.php" method="POST">
 <tr>
 	<th>Name</th>
 	<th>Description</th>
@@ -35,7 +34,7 @@ th, td {
 	<?php
 	$conn = mysqli_connect("localhost", "root", "", "ubung");
 
-	$query = "SELECT * FROM product INNER JOIN restaurant ON product.RestaurantId=restaurant.Id";
+	$query = "SELECT product.Id AS Id, restaurant.Id AS RestaurantId, product.Name AS Name, product.Description, product.Price AS Price, restaurant.RName AS RName FROM product JOIN restaurant ON product.RestaurantId=restaurant.Id";
 	$result = $conn->query($query);
 	if (mysqli_num_rows($result)) {
 		while($row = mysqli_fetch_assoc($result)){
@@ -45,6 +44,7 @@ th, td {
 			$RName		   	= $row['RName'];
 			$Price		   	= $row['Price']; */
 			echo "<tr>";
+			echo "<form action='addtocart.php' method='POST'>";
 			echo "<td>" . $row['Name'] . "</td>";
 			echo "<td>" . $row['Description'] . "</td>";
 			echo "<td>" . $row['RName'] . "</td>";
@@ -54,6 +54,7 @@ th, td {
 			echo "<td style='display: none;'><input type='hidden' name='ProductId' value='" . $row['Id'] . "'></td>";
 			echo "<td style='display: none;'><input type='hidden' name='price' value='" . $row['Price'] . "'></td>";
 			echo "<td><input type='submit' name='submit' value='Add to Cart'></td>";
+			echo "</form>";
 			echo "</tr>";
 	?>
 	<!--<td align="center"><?php //echo $Name;?></td>
@@ -71,7 +72,6 @@ th, td {
 	}
 
 	  ?>
-</form>
 </table>
 
 <br>
