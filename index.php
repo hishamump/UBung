@@ -65,5 +65,6 @@ if (isset($_GET['logout'])) {
 		<?php endif ?>
 	</div>
 	<p>Demo<p>
+		<p>demo2
 </body>
 </html>
