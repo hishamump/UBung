@@ -64,5 +64,6 @@ if (isset($_GET['logout'])) {
 			<p> <a href="index.php?logout='1'" style="color: red;">Logout</a> </p>
 		<?php endif ?>
 	</div>
+	<p>Demo<p>
 </body>
 </html>
